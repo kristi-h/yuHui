@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import {hsk3} from '../hsk3.jsx'
 import '../App.css'
 
 export default function Home(){
+  const navigate = useNavigate()
   const [vocabList, setVocabList] = React.useState(hsk3)
   const [clusters, setClusters] = React.useState([])
   const [cluster, setCluster] = React.useState()
@@ -29,6 +31,7 @@ export default function Home(){
 
   function handleClusterClick(e) {
     setCluster(clusters[e.target.value])
+    navigate(`/practice:${e.target.value}`)
   }
   console.log('chosen-cluster', cluster)
 
@@ -47,7 +50,7 @@ export default function Home(){
     return clusters.map((word, index)=>{
       return(
       <button key={index} onClick={handleClusterClick} className='clusters-btn' value={index}>
-        {index+1}
+        {index}
       </button>
       )
     })
