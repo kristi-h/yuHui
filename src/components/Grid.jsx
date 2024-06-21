@@ -2,7 +2,7 @@ import React from 'react'
 import App from '../App.jsx'
 import { GridSquare } from './GridSquare'
 
-export default function Grid({level}){
+export default function Grid({level, currentWord }){
     const [gridChar, setGridChar] = React.useState([])
 
     // function setLevel(){
@@ -17,13 +17,27 @@ export default function Grid({level}){
 
     // function createGrid(){
     //     gridChar.map(word=> (
-    //         <GridSquare />{word.Chinese}
+    //         <GridSquare handleClick={handleClick} />{word.Chinese}
     //     ))
+    // }
+
+    // function handleClick(e) {
+    //     const selected = e.target.value
+    //     checkAnswer(selected)
+    // }
+
+    // function checkAnswer(string) {
+    //     if (string === currentWord.Chinese) {
+    //         setAnswer(...prev => (
+    //             ...prev, 
+    //             string
+    //         ))
+    //     }
     // }
 
     return(
         <div className='grid-container' id='difficult'>
-            <GridSquare />
+            {/* <GridSquare handleClick={handleClick}/> */}
             <GridSquare />
             <GridSquare />
             <GridSquare />

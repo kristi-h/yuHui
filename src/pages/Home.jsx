@@ -1,41 +1,20 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../App.css'
-import { hsk3 } from '../hsk3.jsx'
+import { shuffle } from '../App'
+// import { hsk3 } from '../hsk3.jsx'
 
-export function shuffle(array) {
-    let currentIndex = array.length;
-    while (currentIndex != 0) {
-      let randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
-      [array[currentIndex], array[randomIndex]] = [
-        array[randomIndex], array[currentIndex]];
-    } 
-}
 
-export default function Home(){
+
+export default function Home({vocabList, clusters, cluster, setCluster}){
   const navigate = useNavigate()
-  const [vocabList, setVocabList] = React.useState(hsk3)
-  const [clusters, setClusters] = React.useState([])
-  const [cluster, setCluster] = React.useState() 
+//   const ClusterContext = React.createContext()
+//   const [vocabList, setVocabList] = React.useState(hsk3)
+//   const [clusters, setClusters] = React.useState([])
+//   const [cluster, setCluster] = React.useState() 
+//   const [level, setLevel] = React.useState()
   const [level, setLevel] = React.useState()
 
-
-  React.useEffect(()=>{
-    function createClusters(){
-    // console.log(typeof vocabList) 
-    // console.log(Array.isArray(vocabList))
-      shuffle(vocabList)
-      const clustered = []
-      for (let i=0; i<vocabList.length; i++){
-        clustered.push(vocabList.slice(i, i+20))
-        i+=20
-      }
-      setClusters(clustered)
-      }
-      createClusters()
-      
-  },[vocabList])
 
   function handleClusterClick(e) {
     setCluster(clusters[e.target.value])
