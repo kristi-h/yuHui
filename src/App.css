@@ -5,13 +5,13 @@
   text-align: center;
 }
 
-.logo {
+.title {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
-.logo:hover {
+.title:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
@@ -33,14 +33,6 @@
   }
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
 .clusters-btn {
   color: white;
   border-color: white;
@@ -48,14 +40,39 @@
 
 .grid-container {
   display: grid;
-  grid-template-rows: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  border: 1px solid white;
   width: 400px;
   height: 400px;
+}
+
+#difficult {
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+/* .medium {
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.easy {
+  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+} */
+
+.answer-container {
+  height: 200px;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 4em 4em;
+  font-size: large;
 }
 
 .grid-square {
   border: 1px solid white;
   background-color: lightgray;
+  color: #646cffaa;
+  margin: 1.2em .8em;
+  border-radius: .8em;
+  font-size: 2rem;
+  padding: 1em 1em;
 }
+

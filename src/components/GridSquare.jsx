@@ -3,6 +3,6 @@ import '../App.css'
 
 export const GridSquare = () => {
     return(
-        <div className="grid-square"></div>
+        <div className="grid-square">报</div>
     )
 }

@@ -1,20 +1,26 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import {hsk3} from '../hsk3.jsx'
 import '../App.css'
+import { hsk3 } from '../hsk3.jsx'
+
+// export function shuffle(array) {
+//     let currentIndex = array.length;
+//     while (currentIndex != 0) {
+//       let randomIndex = Math.floor(Math.random() * currentIndex);
+//       currentIndex--;
+//       [array[currentIndex], array[randomIndex]] = [
+//         array[randomIndex], array[currentIndex]];
+//     } 
+// }
 
 export default function Home(){
   const navigate = useNavigate()
   const [vocabList, setVocabList] = React.useState(hsk3)
   const [clusters, setClusters] = React.useState([])
-  const [cluster, setCluster] = React.useState()
-  const [word, setWord] = React.useState({
-    english: "",
-    pinyin: "",
-    traditional: ""
-  })
-  console.log(vocabList)
-  
+  const [cluster, setCluster] = React.useState() 
+  const [level, setLevel] = React.useState()
+
+
   React.useEffect(()=>{
     function createClusters(){
       shuffle(vocabList)
@@ -31,7 +37,7 @@ export default function Home(){
 
   function handleClusterClick(e) {
     setCluster(clusters[e.target.value])
-    navigate(`/practice:${e.target.value}`)
+    navigate(`/practice/:${e.target.value}`)
   }
   console.log('chosen-cluster', cluster)
 
@@ -43,7 +49,7 @@ export default function Home(){
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex], array[currentIndex]];
     } 
-  }
+}
 
   function clustersEle(){
     console.log(clusters)
