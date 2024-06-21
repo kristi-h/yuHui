@@ -76,3 +76,16 @@
   padding: 1em 1em;
 }
 
+.btn {
+  background-color: #646cffaa;
+  padding: 10px 15px;
+  color: white;
+  text-decoration: none;
+}
+
+.prev-btn {
+  margin-left: -12em;
+  margin-right: 52em;
+}
+
+
