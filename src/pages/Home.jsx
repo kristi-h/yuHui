@@ -8,13 +8,6 @@ import { shuffle } from '../App'
 
 export default function Home({vocabList, clusters, cluster, setCluster}){
   const navigate = useNavigate()
-//   const ClusterContext = React.createContext()
-//   const [vocabList, setVocabList] = React.useState(hsk3)
-//   const [clusters, setClusters] = React.useState([])
-//   const [cluster, setCluster] = React.useState() 
-//   const [level, setLevel] = React.useState()
-  const [level, setLevel] = React.useState()
-
 
   function handleClusterClick(e) {
     setCluster(clusters[e.target.value])

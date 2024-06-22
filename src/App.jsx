@@ -29,12 +29,13 @@ function App() {
   const [vocabList, setVocabList] = React.useState(hsk3)
   const [clusters, setClusters] = React.useState([])
   const [cluster, setCluster] = React.useState() 
+  const [level, setLevel] = React.useState()
 
   const router = createBrowserRouter(createRoutesFromElements(
     
       <Route path="/" element={<Layout />}>
-       <Route index element={<Home vocabList={vocabList} clusters={clusters} cluster={cluster}/>} />
-       <Route path="/practice/:cluster" element={<Practice cluster={cluster}/>} />
+       <Route index element={<Home vocabList={vocabList} level={level} clusters={clusters} cluster={cluster} setCluster={setCluster} />} />
+       <Route path="/practice/:cluster" element={<Practice level={level} cluster={cluster}/>} />
       </Route>
     
   ))
