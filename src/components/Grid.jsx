@@ -1,58 +1,46 @@
 import React from 'react'
-import App from '../App.jsx'
+import '../App.jsx'
 import { GridSquare } from './GridSquare'
+import { shuffle } from '../App'
 
-export default function Grid({level, currentWord }){
+export default function Grid({level, cluster, handleClick, currentWord }){
     const [gridChar, setGridChar] = React.useState([])
 
-    // function setLevel(){
-    //     if (level === "difficult"){
-    //         setGridChar(gridChar.length === 16)
-    //     } else if (level === "medium"){
-    //         setGridChar(gridChar.length === 8)
-    //     } else {
-    //         setGridChar(gridChar.length === 4)
-    //     }
-    // }
+   React.useEffect(()=> {
+    function setLevel(){
+        if (level === "difficult"){
+            setGridChar(cluster.slice(0, 15))
+        } else if (level === "medium"){
+            setGridChar(cluster.slice(0, 7))
+        } else {
+            setGridChar(cluster.slice(0, 3))
+        }
+    }
+    setLevel()
+   }, [level])
 
-    // function createGrid(){
-    //     gridChar.map(word=> (
-    //         <GridSquare handleClick={handleClick} />{word.Chinese}
-    //     ))
-    // }
+   React.useEffect(()=> {
+    function randomizeGridChar(){
+        setGridChar(prev => ({
+            ...prev,
+            currentWord
+        }))
+    shuffle(gridChar)
+    }
+    randomizeGridChar()
+   },[currentWord])
 
-    // function handleClick(e) {
-    //     const selected = e.target.value
-    //     checkAnswer(selected)
-    // }
+    const createGrid = ()=> {
+        return gridChar.map((index)=> (
+            <GridSquare key={index} handleClick={handleClick} gridChar={gridChar} />
+        ))
+    }
 
-    // function checkAnswer(string) {
-    //     if (string === currentWord.Chinese) {
-    //         setAnswer(...prev => (
-    //             ...prev, 
-    //             string
-    //         ))
-    //     }
-    // }
+    
 
     return(
-        <div className='grid-container' id='difficult'>
-            {/* <GridSquare handleClick={handleClick}/> */}
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
-            <GridSquare />
+        <div className='grid-container' id={level}>
+           {createGrid}
         </div>
      
     )

@@ -63,13 +63,6 @@
   grid-template-columns: repeat(1, 1fr);
 } */
 
-.answer-container {
-  height: 200px;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 4em 4em;
-  font-size: large;
-}
-
 .grid-square {
   border: 1px solid white;
   background-color: lightgray;
@@ -92,4 +85,21 @@
   margin-right: 52em;
 }
 
+/* ------Answer Block------------------------------------------*/
+.answer-container {
+  height: 200px;
+  margin: 4em 4em;
+  font-size: large;
+}
 
+#one {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+#two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+#three {
+  grid-template-columns: repeat(3, 1fr);
+}
