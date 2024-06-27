@@ -1,5 +1,7 @@
 import React from 'react'
 import { 
+  useSearchParams,
+  useNavigate, 
   RouterProvider, 
   createBrowserRouter,
   createRoutesFromElements,
@@ -11,7 +13,6 @@ import Home from './pages/Home'
 import Practice from './pages/Practice'
 import Layout from './components/Layout'
 import ReactDOM from "react-dom/client";
-import { useNavigate } from 'react-router-dom'
 import { hsk3 } from './hsk3.jsx'
 
 export function shuffle(array) {
@@ -26,10 +27,14 @@ export function shuffle(array) {
 
 function App() {
   const ClusterContext = React.createContext()
+  const [searchParams, setSearchParams] = useSearchParams()
+  const navigate = useNavigate();
+
   const [vocabList, setVocabList] = React.useState(hsk3)
   const [clusters, setClusters] = React.useState([])
   const [cluster, setCluster] = React.useState() 
   const [level, setLevel] = React.useState()
+  const clusterFilter = searchParams.get('cluster')
 
   const router = createBrowserRouter(createRoutesFromElements(
     
@@ -55,6 +60,10 @@ function App() {
       createClusters()
       
   },[vocabList])
+
+  React.useEffect(()=> {
+    navigate(`/practice/:${cluster}`)
+  }, [clusterFilter])
  
   return (
     <ClusterContext.Provider value={cluster}>

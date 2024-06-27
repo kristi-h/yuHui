@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import '../App.jsx'
 import { GridSquare } from './GridSquare'
 import { shuffle } from '../App'
@@ -38,7 +39,10 @@ export default function Grid({level, cluster, handleClick, currentWord }){
     console.log('gridChar', gridChar)
     const createGrid = ()=> (
         gridChar.map((char, index)=> (
-            <div key={index} >Testing</div>
+            <>
+                <div key={index} >Testing</div>
+                <Link to='/'>Go back home</Link>
+            </>
             // <GridSquare key={index} handleClick={handleClick} char={char} />
     )))
     
