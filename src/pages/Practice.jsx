@@ -1,9 +1,12 @@
 import React from 'react'
 import Grid from '../components/Grid'
+import { useLocation } from 'react-router-dom';
 // import AnswerBlock from '../components/AnswerBlock'
-import { shuffle } from '../App'
+import { shuffle } from './Home'
 
-export default function Practice({cluster, level}){
+export default function Practice(){
+    const {state: cluster, level} = useLocation()
+    
     const [currentWord, setCurrentWord] = React.useState({
         Chinese: "", 
         Pinyin: "",

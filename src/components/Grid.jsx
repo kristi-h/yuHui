@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import '../App.jsx'
 import { GridSquare } from './GridSquare'
-import { shuffle } from '../App'
+import { shuffle } from '../pages/Home'
 
 export default function Grid({level, cluster, handleClick, currentWord }){
     const [gridChar, setGridChar] = React.useState([])
