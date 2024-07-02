@@ -39,10 +39,11 @@ export default function Home(){
       createClusters()
       
   },[vocabList])
+  console.log('clusters', clusters)
 
-  React.useEffect(()=> {
-    navigate(`/practice/:${cluster}`)
-  }, [clusterFilter])
+  // React.useEffect(()=> {
+  //   navigate(`/practice/:${cluster}`)
+  // }, [clusterFilter])
 
   function handleClusterClick(e) {
     setCluster(clusters[e.target.value])

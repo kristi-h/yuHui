@@ -7,11 +7,7 @@ import { shuffle } from './Home'
 export default function Practice(){
     const {state: cluster, level} = useLocation()
     
-    const [currentWord, setCurrentWord] = React.useState({
-        Chinese: "", 
-        Pinyin: "",
-        English: ""
-    })
+    const [currentWord, setCurrentWord] = React.useState()
     //answer is one char in currentWord.Chinese
     const [answer, setAnswer] = React.useState({
         first_char: "",
@@ -24,11 +20,12 @@ export default function Practice(){
         //shuffle cluster on start
         shuffle(cluster)
         setCurrentWord(cluster[0])
-    }, [])
+    }, [cluster])
+    console.log('cluster', cluster)
 
     function getNextWord() {
         console.log('next word')
-        setCurrentWord(prev => prev + 1)
+        setCurrentWord(prev =>  cluster[prev + 1])
     }
 
     function handleClick(e) {
@@ -51,8 +48,10 @@ export default function Practice(){
 
     return(
         <div className='practice-container' >
-            <h3> English Word: {cluster[0].English} </h3>
-            <h3> Pinyin: {cluster[0].Pinyin} </h3>
+            {cluster && cluster[0]}
+                <h3> English Word: {cluster[0].English} </h3>
+                <h3> Pinyin: {cluster[0].Pinyin} </h3>
+
             {/* <AnswerBlock currentWord={currentWord}/> */}
             <br></br>
             <Grid level={level} cluster={cluster} handleClick={handleClick} currentWord={currentWord}/>
