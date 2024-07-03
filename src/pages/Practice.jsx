@@ -9,7 +9,7 @@ export default function Practice(){
     const {cluster} = _cluster
     
     
-    const [currentWord, setCurrentWord] = React.useState()
+    const [currentWord, setCurrentWord] = React.useState({})
     //answer is one char in currentWord.Chinese
     const [answer, setAnswer] = React.useState({
         first_char: "",
@@ -23,7 +23,7 @@ export default function Practice(){
         shuffle(cluster)
         setCurrentWord(cluster[0])
     }, [cluster])
-    console.log('cluster', cluster)
+    console.log('after-shuffle: cluster', cluster)
 
     function getNextWord() {
         console.log('next word')

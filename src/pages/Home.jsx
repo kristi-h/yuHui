@@ -31,7 +31,7 @@ export default function Home(){
       shuffle(vocabList)
       const clustered = []
       for (let i=0; i<vocabList.length; i++){
-        clustered.push(vocabList.slice(i, i+21))
+        clustered.push(vocabList.slice(i, i+20))
         i+=20
       }
       setClusters(clustered)
@@ -39,24 +39,18 @@ export default function Home(){
       createClusters()
       
   },[vocabList])
-  console.log('clusters', clusters)
 
   // React.useEffect(()=> {
   //   navigate(`/practice/:${cluster}`)
   // }, [clusterFilter])
 
   function handleClusterClick(e) {
-    // setCluster(clusters[(e.target.value +1)])
+    setCluster(clusters[(e.currentTarget.value +1)])
     navigate(`/practice/:${parseInt(e.currentTarget.value)+1}`, {
       state: {
         cluster: clusters[e.currentTarget.value],
       }
     })
-    // console.log('value', e.target.value)
-    // console.log(e.currentTarget)
-    // console.log("parseInt(e.currentTarget.value)+1", parseInt(e.currentTarget.value)+1)
-    // console.log("e.currentTarget.value", e.currentTarget.value)
-    console.log("clusters[e.currentTarget.value]", clusters[e.currentTarget.value])
   }
   console.log('chosen-cluster', cluster)
 

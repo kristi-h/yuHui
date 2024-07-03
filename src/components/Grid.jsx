@@ -24,13 +24,9 @@ export default function Grid({level, cluster, handleClick, currentWord }){
    console.log('gridChar', gridChar)
    console.log('grid-cluster', cluster)
 
-   React.useEffect(()=> {
+React.useEffect(()=> {
     function randomizeGridChar(){
-        setGridChar(prev => ({
-            ...prev, 
-            currentWord
-        })
-        )
+        setGridChar(cluster, currentWord)
         shuffle(gridChar)
     }
     
