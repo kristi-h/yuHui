@@ -5,7 +5,9 @@ import { useLocation } from 'react-router-dom';
 import { shuffle } from './Home'
 
 export default function Practice(){
-    const {state: cluster, level} = useLocation()
+    const {state: _cluster, level} = useLocation()
+    const {cluster} = _cluster
+    
     
     const [currentWord, setCurrentWord] = React.useState()
     //answer is one char in currentWord.Chinese
@@ -48,7 +50,7 @@ export default function Practice(){
 
     return(
         <div className='practice-container' >
-            {cluster && cluster[0]}
+            {/* {cluster && cluster[0]} */}
                 <h3> English Word: {cluster[0].English} </h3>
                 <h3> Pinyin: {cluster[0].Pinyin} </h3>
 

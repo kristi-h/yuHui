@@ -15,7 +15,7 @@ export function shuffle(array) {
 
 export default function Home(){
   const navigate = useNavigate()
-  const ClusterContext = React.createContext()
+  // const ClusterContext = React.createContext()
   const [searchParams, setSearchParams] = useSearchParams()
 
   const [vocabList, setVocabList] = React.useState(hsk3)
@@ -31,7 +31,7 @@ export default function Home(){
       shuffle(vocabList)
       const clustered = []
       for (let i=0; i<vocabList.length; i++){
-        clustered.push(vocabList.slice(i, i+20))
+        clustered.push(vocabList.slice(i, i+21))
         i+=20
       }
       setClusters(clustered)
@@ -46,26 +46,31 @@ export default function Home(){
   // }, [clusterFilter])
 
   function handleClusterClick(e) {
-    setCluster(clusters[e.target.value])
-    navigate(`/practice/:${e.target.value}`, {
+    // setCluster(clusters[(e.target.value +1)])
+    navigate(`/practice/:${parseInt(e.currentTarget.value)+1}`, {
       state: {
-        cluster,
-        level
+        cluster: clusters[e.currentTarget.value],
       }
     })
+    // console.log('value', e.target.value)
+    // console.log(e.currentTarget)
+    // console.log("parseInt(e.currentTarget.value)+1", parseInt(e.currentTarget.value)+1)
+    // console.log("e.currentTarget.value", e.currentTarget.value)
+    console.log("clusters[e.currentTarget.value]", clusters[e.currentTarget.value])
   }
   console.log('chosen-cluster', cluster)
 
   function clustersEle(){
-    console.log(clusters)
+    
     return clusters.map((word, index)=>{
       return(
       <button key={index} onClick={handleClusterClick} className='clusters-btn' value={index}>
-        {index}
+        {(index +1)}
       </button>
       )
     })
   }
+  console.log('clusters', clusters)
 
 
     return(

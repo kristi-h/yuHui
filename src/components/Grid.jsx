@@ -10,6 +10,7 @@ export default function Grid({level, cluster, handleClick, currentWord }){
 
    React.useEffect(()=> {
     function setLevel(){
+        // console.log('grid-cluster', cluster)
         if (level === "difficult"){
             setGridChar(cluster.slice(0, 15))
         } else if (level === "medium"){
@@ -21,6 +22,7 @@ export default function Grid({level, cluster, handleClick, currentWord }){
     setLevel()
    }, [level])
    console.log('gridChar', gridChar)
+   console.log('grid-cluster', cluster)
 
    React.useEffect(()=> {
     function randomizeGridChar(){
@@ -34,16 +36,16 @@ export default function Grid({level, cluster, handleClick, currentWord }){
     
     randomizeGridChar()
    },[currentWord])
-   console.log('gridChar', gridChar)
+//    console.log('gridChar', gridChar)
 
     console.log('gridChar', gridChar)
     const createGrid = ()=> (
         gridChar.map((char, index)=> (
-            <>
-                <div key={index} >Testing</div>
-                <Link to='/'>Go back home</Link>
-            </>
-            // <GridSquare key={index} handleClick={handleClick} char={char} />
+            // <>
+            //     <div key={index} >Testing</div>
+            //     <Link to='/'>Go back home</Link>
+            // </>
+            <GridSquare key={index} handleClick={handleClick} char={char} />
     )))
     
     return(
