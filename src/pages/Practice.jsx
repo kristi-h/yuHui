@@ -56,7 +56,7 @@ export default function Practice(){
 
             {/* <AnswerBlock currentWord={currentWord}/> */}
             <br></br>
-            <Grid level={level} cluster={cluster} handleClick={handleClick} currentWord={currentWord}/>
+            <Grid level={level} cluster={cluster} handleClick={handleClick} currentWord={currentWord} />
                 <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                 <button className='btn next-btn' onClick={getNextWord}>Next</button>
         </div>
