@@ -6,7 +6,8 @@ import { shuffle } from '../pages/Home'
 import { useMemo, useState } from 'react';
 
 export default function Grid({level, cluster, handleClick, currentWord }){
-    let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
+    // let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
+    let gridChar = cluster.slice(0, 2)
 
     function getGrid(){
         function setLevel(){
@@ -19,15 +20,14 @@ export default function Grid({level, cluster, handleClick, currentWord }){
                 gridChar = cluster.slice(0, 2)
             }
         }
-
-        function randomizeGridChar(){
-            gridChar.push(currentWord)
-            shuffle(gridChar)
-        }
-        
-        setLevel()
+        setLevel
         randomizeGridChar()
     }  
+
+    function randomizeGridChar(){
+        gridChar.push(currentWord)
+        shuffle(gridChar)
+    }
 //    React.useEffect(()=> {
 //     function setLevel(){
 //         console.log('level-cluster', cluster)
@@ -41,8 +41,8 @@ export default function Grid({level, cluster, handleClick, currentWord }){
 //     }
 //     setLevel()
 //    }, [level])
-   console.log('gridChar', gridChar)
-   console.log('grid-cluster', cluster)
+//    console.log('gridChar', gridChar)
+//    console.log('grid-cluster', cluster)
 
 // React.useEffect(()=> {
 //     function randomizeGridChar(){
