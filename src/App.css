@@ -44,8 +44,10 @@
 
 .grid-container {
   display: grid;
-  width: 400px;
-  height: 400px;
+  /* width: 400px;
+  height: 400px; */
+  grid-template-columns: 1fr 1fr; 
+  grid-gap: 10px; 
 }
 
 #difficult {
@@ -53,15 +55,15 @@
   grid-template-columns: repeat(4, 1fr);
 }
 
-/* .medium {
+#medium {
   grid-template-rows: repeat(2, 1fr);
   grid-template-columns: repeat(2, 1fr);
 }
 
-.easy {
+#easy {
   grid-template-rows: repeat(1, 1fr);
   grid-template-columns: repeat(1, 1fr);
-} */
+}
 
 .grid-square {
   border: 1px solid white;
