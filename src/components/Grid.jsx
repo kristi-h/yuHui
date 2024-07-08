@@ -9,14 +9,15 @@ export default function Grid({level, cluster, handleClick, currentWord }){
     // let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
     let gridChar = cluster.slice(0, 3)
     console.log("currentWord", currentWord)
-
+    console.log("level", level)
+    
     function getGrid(){
         function setLevel(){
             console.log('level-cluster', cluster)
             if (level === "difficult"){
                 gridChar = cluster.slice(0, 15)
             } else if (level === "medium"){
-                gridChar = cluster.slice(0, 7)
+                gridChar = cluster.slice(0, 8)
             } else {
                 level ==="easy"
                 gridChar = cluster.slice(0, 3)
@@ -38,7 +39,7 @@ export default function Grid({level, cluster, handleClick, currentWord }){
     )))
     
     return(
-        <div className='grid-container' id="medium">
+        <div className='grid-container' id={level}>
             {getGrid(level)}
            {gridChar && gridChar.length>0 && createGrid()}
         </div>

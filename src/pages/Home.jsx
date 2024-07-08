@@ -21,7 +21,7 @@ export default function Home(){
   const [vocabList, setVocabList] = React.useState(hsk3)
   const [clusters, setClusters] = React.useState([])
   const [cluster, setCluster] = React.useState() 
-  const [level, setLevel] = React.useState()
+  const [level, setLevel] = React.useState("easy")
   const clusterFilter = searchParams.get('cluster')
 
   React.useEffect(()=>{
@@ -44,15 +44,21 @@ export default function Home(){
   //   navigate(`/practice/:${cluster}`)
   // }, [clusterFilter])
 
+  function handleLevelClick(e){
+    setLevel(e.currentTarget.value)
+  }
+
   function handleClusterClick(e) {
     setCluster(clusters[(e.currentTarget.value +1)])
     navigate(`/practice/:${parseInt(e.currentTarget.value)+1}`, {
       state: {
         cluster: clusters[e.currentTarget.value],
+        level
       }
     })
   }
   console.log('chosen-cluster', cluster)
+  console.log('level', level)
 
   function clustersEle(){
     
@@ -68,7 +74,12 @@ export default function Home(){
 
 
     return(
-        <>
+        <>  
+            <h1>Pick your Level:</h1>
+            <button onClick={handleLevelClick} value="easy">Easy</button>
+            <button onClick={handleLevelClick} value="medium">Medium</button>
+            <button onClick={handleLevelClick} value="difficult">Difficult</button>
+
             <h1>Pick a cluster</h1>
             {clustersEle()}
         </>

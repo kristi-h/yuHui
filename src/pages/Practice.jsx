@@ -5,8 +5,9 @@ import { useLocation } from 'react-router-dom';
 import { shuffle } from './Home'
 
 export default function Practice(){
-    const {state: _cluster, level} = useLocation()
-    const {cluster} = _cluster
+    const {state} = useLocation()
+    const {cluster, level} = state
+    console.log('level', level)
     
     
     const [currentWord, setCurrentWord] = React.useState({})
