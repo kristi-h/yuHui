@@ -7,11 +7,11 @@ import { shuffle } from './Home'
 export default function Practice(){
     const {state} = useLocation()
     const {cluster, level} = state
-    console.log('level', level)
     
-    
+    //question word
     const [currentWord, setCurrentWord] = React.useState({})
-    //answer is one char in currentWord.Chinese
+
+    //current answer
     const [answer, setAnswer] = React.useState({
         first_char: "",
         second_char: "",
@@ -31,10 +31,14 @@ export default function Practice(){
         setCurrentWord(prev =>  cluster[prev + 1])
     }
 
-    function handleClick(e) {
-        const selected = e.target.value
+    function handleSquareClick(e) {
+        console.log('e', e)
+        const selected = e.currentTarget.value
+        // console.log("selected", selected)
+        setSquare(selected)
         checkGuess(selected)
     }
+    console.log("square", square)
 
     function checkGuess(str) {
         //check if guess matches any one char of the currentWord
@@ -57,7 +61,7 @@ export default function Practice(){
 
             {/* <AnswerBlock currentWord={currentWord}/> */}
             <br></br>
-            <Grid level={level} cluster={cluster} handleClick={handleClick} currentWord={currentWord} />
+            <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} />
                 <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                 <button className='btn next-btn' onClick={getNextWord}>Next</button>
         </div>
