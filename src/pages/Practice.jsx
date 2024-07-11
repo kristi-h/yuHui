@@ -1,5 +1,6 @@
 import React from 'react'
 import Grid from '../components/Grid'
+import { SelectedSquareProvider } from '../contexts/SelectedSquareContext'
 import { useLocation } from 'react-router-dom';
 // import AnswerBlock from '../components/AnswerBlock'
 import { shuffle } from './Home'
@@ -54,17 +55,18 @@ export default function Practice(){
     }
 
     return(
-        <div className='practice-container' >
-            {/* {cluster && cluster[0]} */}
-                <h3> English Word: {cluster[0].English} </h3>
-                <h3> Pinyin: {cluster[0].Pinyin} </h3>
+        <SelectedSquareProvider>
+            <div className='practice-container' >
+                {/* {cluster && cluster[0]} */}
+                    <h3> English Word: {cluster[0].English} </h3>
+                    <h3> Pinyin: {cluster[0].Pinyin} </h3>
 
-            {/* <AnswerBlock currentWord={currentWord}/> */}
-            <br></br>
-            <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} />
-                <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
-                <button className='btn next-btn' onClick={getNextWord}>Next</button>
-        </div>
-
+                {/* <AnswerBlock currentWord={currentWord}/> */}
+                <br></br>
+                <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} />
+                    <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
+                    <button className='btn next-btn' onClick={getNextWord}>Next</button>
+            </div>
+        </SelectedSquareProvider>
     )
 }

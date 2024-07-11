@@ -1,13 +1,15 @@
 import React from "react";
 import '../App.css'
+import { useSelectedSquare } from '../contexts/SelectedSquareContext'
 
 
 export const GridSquare = ({handleClick, index, char}) => {
-    console.log("char", char)
-    console.log('handleClick', handleClick)
+    const { selectedSquare } = useSelectedSquare()
    
     return(
-        <button className="grid-square" onClick={() => handleClick()} value={char.Chinese} >{char.Chinese}</button>
+        <div>
+            <button className="grid-square" onClick={() => handleClick()} value={char.Chinese} >{char.Chinese}</button>
+        </div>
     )
     
 }
