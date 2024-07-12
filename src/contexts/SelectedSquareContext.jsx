@@ -7,7 +7,7 @@ export const SelectedSquareProvider = ({ children }) => {
     const [ selectedSquare, setSelectedSquare ] = useState()
 
     return (
-        <SelectedSquareContext.Provider value={{ selectedSquare, setSelectedSquare }}>
+        <SelectedSquareContext.Provider value={{ selectedSquare, setSelectedSquare, handleClick() }}>
             { children }
         </SelectedSquareContext.Provider>
     )

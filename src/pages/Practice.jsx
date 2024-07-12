@@ -20,6 +20,8 @@ export default function Practice(){
         isComplete: false
     })
 
+    // const { handleClick } = useSelectedSquare()
+
     React.useEffect(()=> {
         //shuffle cluster on start
         shuffle(cluster)
@@ -32,14 +34,13 @@ export default function Practice(){
         setCurrentWord(prev =>  cluster[prev + 1])
     }
 
-    function handleSquareClick(e) {
+    function handleClick(e) {
         console.log('e', e)
         const selected = e.currentTarget.value
         // console.log("selected", selected)
-        setSquare(selected)
+        setSelectedSquare(selected)
         checkGuess(selected)
     }
-    console.log("square", square)
 
     function checkGuess(str) {
         //check if guess matches any one char of the currentWord
@@ -63,7 +64,8 @@ export default function Practice(){
 
                 {/* <AnswerBlock currentWord={currentWord}/> */}
                 <br></br>
-                <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} />
+                {/* <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} /> */}
+                <Grid level={level} cluster={cluster} currentWord={currentWord} />
                     <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                     <button className='btn next-btn' onClick={getNextWord}>Next</button>
             </div>

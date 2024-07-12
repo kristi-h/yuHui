@@ -5,7 +5,7 @@ import { GridSquare } from './GridSquare'
 import { shuffle } from '../pages/Home'
 import { useMemo, useState } from 'react';
 
-export default function Grid({level, cluster, handleSquareClick, currentWord }){
+export default function Grid({level, cluster, currentWord }){
     // let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
     let gridChar = cluster.slice(0, 3)
     console.log("currentWord", currentWord)
@@ -35,7 +35,8 @@ export default function Grid({level, cluster, handleSquareClick, currentWord }){
     console.log('gridChar', gridChar)
     const createGrid = ()=> (
         gridChar.map((char, index)=> (
-            <GridSquare key={index} handleClick={handleSquareClick} char={char}  />
+            <GridSquare key={index} char={char}  />
+            // <GridSquare key={index} handleClick={handleSquareClick} char={char}  />
     )))
     
     return(

@@ -3,8 +3,8 @@ import '../App.css'
 import { useSelectedSquare } from '../contexts/SelectedSquareContext'
 
 
-export const GridSquare = ({handleClick, index, char}) => {
-    const { selectedSquare } = useSelectedSquare()
+export const GridSquare = ({char}) => {
+    const { handleClick } = useSelectedSquare()
    
     return(
         <div>
