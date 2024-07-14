@@ -40,10 +40,6 @@ export default function Home(){
       
   },[vocabList])
 
-  // React.useEffect(()=> {
-  //   navigate(`/practice/:${cluster}`)
-  // }, [clusterFilter])
-
   function handleLevelClick(e){
     setLevel(e.currentTarget.value)
   }
