@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import Grid from '../components/Grid'
 import { SelectedSquareProvider } from '../contexts/SelectedSquareContext'
 import { useLocation } from 'react-router-dom';
@@ -8,46 +8,32 @@ import { shuffle } from './Home'
 export default function Practice(){
     const {state} = useLocation()
     const {cluster, level} = state
+    let { selectedSquare } = useSelectedSquare()
+    selectedSquare = useMemo(checkGuess, selectedSquare)
+    const [questionWord, setQuestionWord] = React.useState()
+    const [displayedAnswer, setDisplayedAnswer] = React.useState()
     
-    //question word
-    const [currentWord, setCurrentWord] = React.useState({})
-
-    //current answer
-    const [answer, setAnswer] = React.useState({
-        first_char: "",
-        second_char: "",
-        third_char: "",
-        isComplete: false
-    })
-
-    // const { handleClick } = useSelectedSquare()
-
     React.useEffect(()=> {
         //shuffle cluster on start
         shuffle(cluster)
-        setCurrentWord(cluster[0])
+        setQuestionWord(cluster[0])
     }, [cluster])
     console.log('after-shuffle: cluster', cluster)
 
     function getNextWord() {
         console.log('next word')
-        setCurrentWord(prev =>  cluster[prev + 1])
-    }
-
-    function handleClick(e) {
-        console.log('e', e)
-        const selected = e.currentTarget.value
-        // console.log("selected", selected)
-        setSelectedSquare(selected)
-        checkGuess(selected)
+        setQuestionWord(prev =>  cluster[prev + 1])
     }
 
     function checkGuess(str) {
         //check if guess matches any one char of the currentWord
-        if (currentWord.Chinese.includes) {
-            const keys = Object.keys(answer)
-            const index = currentWord.Chinese.indexOf(str)
-            setAnswer(prev => ({
+        if (selectedSquare === questionWord) {
+            console.log("completedWord")         
+        }
+        else if (questionWord.Chinese.includes) {
+            const keys = Object.keys(displayedAnswer)
+            const index = questionWord.Chinese.indexOf(str)
+            setDisplayedAnswer(prev => ({
                 ...prev, 
                 [keys[index]]: str
         }))
@@ -65,7 +51,7 @@ export default function Practice(){
                 {/* <AnswerBlock currentWord={currentWord}/> */}
                 <br></br>
                 {/* <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} /> */}
-                <Grid level={level} cluster={cluster} currentWord={currentWord} />
+                <Grid level={level} cluster={cluster} currentWord={questionWord} />
                     <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                     <button className='btn next-btn' onClick={getNextWord}>Next</button>
             </div>

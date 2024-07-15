@@ -36,7 +36,6 @@ export default function Grid({level, cluster, currentWord }){
     const createGrid = ()=> (
         gridChar.map((char, index)=> (
             <GridSquare key={index} char={char}  />
-            // <GridSquare key={index} handleClick={handleSquareClick} char={char}  />
     )))
     
     return(

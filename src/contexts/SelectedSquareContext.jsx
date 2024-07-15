@@ -4,10 +4,15 @@ import ReactDOM from 'react-dom'
 const SelectedSquareContext = createContext()
 
 export const SelectedSquareProvider = ({ children }) => {
-    const [ selectedSquare, setSelectedSquare ] = useState()
+    let [ selectedSquare, setSelectedSquare ] = useState()
+
+    function handleClick(e){
+        setSelectedSquare(e.target.value)
+        console.log('selectedSquare', selectedSquare)
+    }
 
     return (
-        <SelectedSquareContext.Provider value={{ selectedSquare, setSelectedSquare, handleClick() }}>
+        <SelectedSquareContext.Provider value={{ selectedSquare, setSelectedSquare, handleClick }}>
             { children }
         </SelectedSquareContext.Provider>
     )
