@@ -6,6 +6,7 @@ import {
   Routes, 
   Route
   } from "react-router-dom"
+import { SelectedSquareProvider } from './contexts/SelectedSquareContext'
 import './App.css'
 import Home from './pages/Home'
 import Practice from './pages/Practice'
@@ -19,13 +20,15 @@ function App() {
     
       <Route path="/" element={<Layout />}>
        <Route index element={<Home />} />
-       <Route path="/practice/:cluster" element={<Practice />} />
+        <Route path="/practice/:cluster" element={<Practice />} />
       </Route>
     
   ))
  
   return (
-    <RouterProvider router={router} />
+    <SelectedSquareProvider>
+      <RouterProvider router={router} />
+    </SelectedSquareProvider>
   )
 }
 

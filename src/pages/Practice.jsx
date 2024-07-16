@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 import Grid from '../components/Grid'
-import { SelectedSquareProvider } from '../contexts/SelectedSquareContext'
+import { SelectedSquareProvider, useSelectedSquare } from '../contexts/SelectedSquareContext'
 import { useLocation } from 'react-router-dom';
 // import AnswerBlock from '../components/AnswerBlock'
 import { shuffle } from './Home'
@@ -8,8 +8,8 @@ import { shuffle } from './Home'
 export default function Practice(){
     const {state} = useLocation()
     const {cluster, level} = state
-    let { selectedSquare } = useSelectedSquare()
-    selectedSquare = useMemo(checkGuess, selectedSquare)
+    const { selectedSquare } = useSelectedSquare()
+
     const [questionWord, setQuestionWord] = React.useState()
     const [displayedAnswer, setDisplayedAnswer] = React.useState()
     
@@ -39,10 +39,13 @@ export default function Practice(){
         }))
             //add another condition for enabling next button when word completes
         }
+        else {
+            console.log("wrong character")
+        }
     }
 
     return(
-        <SelectedSquareProvider>
+        
             <div className='practice-container' >
                 {/* {cluster && cluster[0]} */}
                     <h3> English Word: {cluster[0].English} </h3>
@@ -55,6 +58,6 @@ export default function Practice(){
                     <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                     <button className='btn next-btn' onClick={getNextWord}>Next</button>
             </div>
-        </SelectedSquareProvider>
+        
     )
 }
