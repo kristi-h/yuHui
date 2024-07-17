@@ -20,15 +20,15 @@ function App() {
     
       <Route path="/" element={<Layout />}>
        <Route index element={<Home />} />
-        <Route path="/practice/:cluster" element={<Practice />} />
+        <Route path="/practice/:cluster" element={<SelectedSquareProvider><Practice /></SelectedSquareProvider>} />
       </Route>
     
   ))
  
   return (
-    <SelectedSquareProvider>
+    
       <RouterProvider router={router} />
-    </SelectedSquareProvider>
+   
   )
 }
 

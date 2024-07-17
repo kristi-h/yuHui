@@ -33,10 +33,15 @@ export default function Grid({level, cluster, currentWord }){
     }
 
     console.log('gridChar', gridChar)
-    const createGrid = ()=> (
-        gridChar.map((char, index)=> (
-            <GridSquare key={index} char={char}  />
-    )))
+    const createGrid = () => {
+        return gridChar
+          .filter(char => char)
+          .map(
+          (char, index) => {
+            console.log(char,"char")
+            return <GridSquare key={index} char={char} />
+        })
+      }
     
     return(
         <div className='grid-container' id={level}>
