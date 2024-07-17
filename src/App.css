@@ -68,6 +68,8 @@
 }
 
 .grid-square {
+  height: 4em;
+  width: 6em;
   border: 1px solid white;
   background-color: lightgray;
   color: #646cffaa;
