@@ -9,6 +9,7 @@ export const SelectedSquareProvider = ({ children }) => {
     function handleClick(e){
         setSelectedSquare(e.target.value)
         console.log('selectedSquare', selectedSquare)
+        // checkGuess()
     }
 
     return (

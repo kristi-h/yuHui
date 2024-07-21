@@ -1,21 +1,19 @@
-// import React from 'react'
-// import { GridSquare } from './GridSquare'
-// import '../App.css'
+import React from 'react'
+import '../App.css'
 
-// export default function AnswerBlock({currentWord, answer}) {
+export default function AnswerBlock({questionWord, displayedAnswer}) {
 
-//     React.useEffect(()=> {
-//         const createAnswerBlock = ()=> {
-//             return currentWord.Chinese.map((word, index)=> (
-//                 <div key={index} className='answer-container' id={`${currentWord.Chinese.length > 2}? "three" : ${currentWord.Chinese.length > 1}? "two" : "one" `}></div>
-//             ))
-//         }
-//         createAnswerBlock()
-//     },[currentWord])
+    // const createAnswerBlock = ()=> {
+    //     // console.log('questionWord', questionWord)
+    //     return questionWord.Chinese.map((word, index)=> (
+    //         <div key={index} className='answer-container' id={`${questionWord.Chinese.length > 2}? "three" : ${questionWord.Chinese.length > 1}? "two" : "one" `}></div>
+    //     ))
+    // }
 
-//     return(
-//         <>
-//             {/* {createAnswerBlock} */}
-//         </>
-//     )
-// }
+    return(
+        <>
+            {/* {createAnswerBlock} */}
+            <div>Answer Block</div>
+        </>
+    )
+}

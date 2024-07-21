@@ -26,8 +26,8 @@ export default function Home(){
 
   React.useEffect(()=>{
     function createClusters(){
-    console.log(typeof vocabList) 
-    console.log(Array.isArray(vocabList))
+    // console.log(typeof vocabList) 
+    // console.log(Array.isArray(vocabList))
       shuffle(vocabList)
       const clustered = []
       for (let i=0; i<vocabList.length; i++){
@@ -53,8 +53,8 @@ export default function Home(){
       }
     })
   }
-  console.log('chosen-cluster', cluster)
-  console.log('level', level)
+  // console.log('chosen-cluster', cluster)
+  // console.log('level', level)
 
   function clustersEle(){
     
@@ -66,7 +66,7 @@ export default function Home(){
       )
     })
   }
-  console.log('clusters', clusters)
+  // console.log('clusters', clusters)
 
 
     return(

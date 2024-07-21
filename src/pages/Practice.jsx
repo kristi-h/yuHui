@@ -6,19 +6,22 @@ import { useLocation } from 'react-router-dom';
 import { shuffle } from './Home'
 
 export default function Practice(){
+    //from homepage
     const {state} = useLocation()
     const {cluster, level} = state
+
+    //from context
     const { selectedSquare } = useSelectedSquare()
 
-    const [questionWord, setQuestionWord] = React.useState()
+    //this display
+    const [questionWord, setQuestionWord] = React.useState(cluster[0])
     const [displayedAnswer, setDisplayedAnswer] = React.useState()
     
     React.useEffect(()=> {
         //shuffle cluster on start
         shuffle(cluster)
-        setQuestionWord(cluster[0])
     }, [cluster])
-    console.log('after-shuffle: cluster', cluster)
+    console.log('questionWord', questionWord)
 
     function getNextWord() {
         console.log('next word')
@@ -26,6 +29,7 @@ export default function Practice(){
     }
 
     function checkGuess(str) {
+        // console.log('selectedSquare', selectedSquare)
         //check if guess matches any one char of the currentWord
         if (selectedSquare === questionWord) {
             console.log("completedWord")         
@@ -48,12 +52,12 @@ export default function Practice(){
         
             <div className='practice-container' >
                 {/* {cluster && cluster[0]} */}
-                    <h3> English Word: {cluster[0].English} </h3>
-                    <h3> Pinyin: {cluster[0].Pinyin} </h3>
+                    <h3> English Word: {questionWord.English} </h3>
+                    <h3> Pinyin: {questionWord.Pinyin} </h3>
 
-                {/* <AnswerBlock currentWord={currentWord}/> */}
+                {/* <AnswerBlock questionWord={questionWord} displayedAnswer={displayedAnswer} /> */}
                 <br></br>
-                {/* <Grid level={level} cluster={cluster} handleSquareClick={handleSquareClick} currentWord={currentWord} /> */}
+
                 <Grid level={level} cluster={cluster} currentWord={questionWord} />
                     <button className='btn prev-btn' onClick={getNextWord}>Previous</button>
                     <button className='btn next-btn' onClick={getNextWord}>Next</button>
