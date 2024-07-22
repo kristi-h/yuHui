@@ -15,12 +15,12 @@ export default function Grid({level, cluster, currentWord }){
         function setLevel(){
             console.log('level-cluster', cluster)
             if (level === "difficult"){
-                gridChar = cluster.slice(0, 15)
+                gridChar = cluster.slice(0, 16)
             } else if (level === "medium"){
-                gridChar = cluster.slice(0, 8)
+                gridChar = cluster.slice(0, 9)
             } else {
                 level ==="easy"
-                gridChar = cluster.slice(0, 3)
+                gridChar = cluster.slice(0, 4)
             }
         }
         setLevel()
@@ -28,7 +28,9 @@ export default function Grid({level, cluster, currentWord }){
     } 
 
     function randomizeGridChar(){
-        gridChar.push(currentWord)
+        if (!gridChar.includes(currentWord)){
+            gridChar.pop().push(currentWord)
+        } 
         shuffle(gridChar)
     }
 
