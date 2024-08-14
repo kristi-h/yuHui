@@ -5,9 +5,10 @@ const SelectedSquareContext = createContext()
 
 export const SelectedSquareProvider = ({ children }) => {
     let [ selectedSquare, setSelectedSquare ] = useState()
+    
 
     function handleClick(e){
-        setSelectedSquare(e.target.value)
+        setSelectedSquare(e.currentTarget.value)
         console.log('selectedSquare', selectedSquare)
         // checkGuess()
     }

@@ -23,23 +23,27 @@ export default function Practice(){
     }, [cluster])
     console.log('questionWord', questionWord)
 
+    React.useEffect(()=> {
+        //run check every time new square is clicked
+        checkGuess()
+
+    }, [selectedSquare])
+
     function getNextWord() {
-        console.log('next word')
+        console.log('next word?')
         setQuestionWord(prev =>  cluster[prev + 1])
     }
 
     function checkGuess(str) {
         // console.log('selectedSquare', selectedSquare)
         //check if guess matches any one char of the currentWord
-        if (selectedSquare === questionWord) {
-            console.log("completedWord")         
-        }
-        else if (questionWord.Chinese.includes) {
+        console.log("check guess")
+        if (questionWord.Chinese.includes(selectedSquare)) {
             const keys = Object.keys(displayedAnswer)
-            const index = questionWord.Chinese.indexOf(str)
+            const index = questionWord.Chinese.indexOf(selectedSquare)
             setDisplayedAnswer(prev => ({
                 ...prev, 
-                [keys[index]]: str
+                [keys[index]]: selectedSquare
         }))
             //add another condition for enabling next button when word completes
         }

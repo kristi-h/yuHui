@@ -11,6 +11,15 @@ export default function Grid({level, cluster, currentWord }){
     console.log("currentWord", currentWord)
     console.log("level", level)
 
+    React.useEffect(()=> {
+        function refreshGrid(){
+            shuffle(cluster)
+            getGrid()
+        }
+       refreshGrid()
+
+    },[currentWord])
+
     function getGrid(){
         function setLevel(){
             console.log('level-cluster', cluster)
@@ -24,14 +33,14 @@ export default function Grid({level, cluster, currentWord }){
             }
         }
         setLevel()
-        randomizeGridChar()
+        addCurrentWord()
     } 
 
-    function randomizeGridChar(){
+    function addCurrentWord(){
         if (!gridChar.includes(currentWord)){
-            gridChar.pop().push(currentWord)
+            gridChar.pop()
+            gridChar.push(currentWord)
         } 
-        shuffle(gridChar)
     }
 
     console.log('gridChar', gridChar)
