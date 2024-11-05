@@ -1,64 +1,102 @@
-import React from 'react'
+import React, { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import '../App.jsx'
-import { GridSquare } from './GridSquare'
-import { shuffle } from '../pages/Home'
-import { useMemo, useState } from 'react';
+import "../App.jsx";
+import { GridSquare } from "./GridSquare";
+import { shuffle } from "../pages/Home";
 
-export default function Grid({level, cluster, currentWord }){
-    // let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
-    let gridChar = cluster.slice(0, 3)
-    console.log("currentWord", currentWord)
-    console.log("level", level)
+// export default function Grid({ level, cluster, currentWord }) {
+//   // let gridChar = useMemo(()=> getGrid(level, cluster), [level, currentWord])
+//   const [gridChar, setGridChar] = useState([]);
+//   console.log("currentWord", currentWord);
+//   console.log("level", level);
 
-    React.useEffect(()=> {
-        function refreshGrid(){
-            shuffle(cluster)
-            getGrid()
-        }
-       refreshGrid()
+//   React.useEffect(() => {
+//     const refreshGrid = () => {
+//       shuffle(cluster);
+//       setGridChar(getGrid());
+//     };
+//     refreshGrid();
+//   }, [currentWord]);
 
-    },[currentWord])
+//   function getGrid() {
+//     let tempGrid;
+//     switch (level) {
+//       case "difficult":
+//         tempGrid = cluster.slice(0, 16);
+//         break;
+//       case "medium":
+//         tempGrid = cluster.slice(0, 9);
+//         break;
+//       default:
+//         tempGrid = cluster.slice(0, 4);
+//     }
+//     return addCurrentWord(tempGrid);
+//   }
 
-    function getGrid(){
-        function setLevel(){
-            console.log('level-cluster', cluster)
-            if (level === "difficult"){
-                gridChar = cluster.slice(0, 16)
-            } else if (level === "medium"){
-                gridChar = cluster.slice(0, 9)
-            } else {
-                level ==="easy"
-                gridChar = cluster.slice(0, 4)
-            }
-        }
-        setLevel()
-        addCurrentWord()
-    } 
+//   function addCurrentWord(tempGrid) {
+//     if (!tempGrid.includes(currentWord)) {
+//       tempGrid.pop();
+//       tempGrid.push(currentWord);
+//     }
+//     return tempGrid;
+//   }
 
-    function addCurrentWord(){
-        if (!gridChar.includes(currentWord)){
-            gridChar.pop()
-            gridChar.push(currentWord)
-        } 
+//   const createGrid = () => {
+//     return gridChar
+//       .filter((char) => char)
+//       .map((char, index) => <GridSquare key={index} char={char.Chinese} />);
+//   };
+
+//   return (
+//     <div className="grid-container" id={level}>
+//       {gridChar && gridChar.length > 0 && createGrid()}
+//     </div>
+//   );
+// }
+
+export default function Grid({ level, cluster, currentWord }) {
+  const [gridChar, setGridChar] = useState([]);
+
+  React.useEffect(() => {
+    const refreshGrid = () => {
+      shuffle(cluster);
+      setGridChar(getGrid());
+    };
+    refreshGrid();
+  }, [currentWord]);
+
+  function getGrid() {
+    let tempGrid;
+    switch (level) {
+      case "difficult":
+        tempGrid = cluster.slice(0, 16);
+        break;
+      case "medium":
+        tempGrid = cluster.slice(0, 9);
+        break;
+      default:
+        tempGrid = cluster.slice(0, 4);
     }
+    return addCurrentWord(tempGrid);
+  }
 
-    console.log('gridChar', gridChar)
-    const createGrid = () => {
-        return gridChar
-          .filter(char => char)
-          .map(
-          (char, index) => {
-            console.log(char,"char")
-            return <GridSquare key={index} char={char} />
-        })
-      }
-    
-    return(
-        <div className='grid-container' id={level}>
-            {getGrid(level)}
-           {gridChar && gridChar.length>0 && createGrid()}
-        </div>
-     
-    )
+  function addCurrentWord(tempGrid) {
+    if (!tempGrid.includes(currentWord)) {
+      tempGrid.pop();
+      tempGrid.push(currentWord);
+    }
+    return tempGrid;
+  }
+
+  const createGrid = () => {
+    return gridChar
+      .filter((char) => char)
+      .map((char, index) => <GridSquare key={index} char={char.Chinese} />);
+  };
+
+  return (
+    <div className="grid-container" id={level}>
+      {gridChar && gridChar.length > 0 && createGrid()}
+    </div>
+  );
 }

@@ -1,10 +1,13 @@
-import React, { createContext, useState, useContext } from "react";
-import ReactDOM from "react-dom";
+import { createContext, useState, useContext, useEffect } from "react";
 
 const SelectedSquareContext = createContext();
 
 export const SelectedSquareProvider = ({ children }) => {
-  let [selectedSquare, setSelectedSquare] = useState();
+  let [selectedSquare, setSelectedSquare] = useState({});
+
+  useEffect(() => {
+    console.log("selectedSquare updated:", selectedSquare);
+  }, [selectedSquare]);
 
   function handleClick(e) {
     setSelectedSquare(e.target.value);
