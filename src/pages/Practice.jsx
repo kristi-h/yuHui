@@ -11,14 +11,17 @@ import { shuffle } from "./Home";
 export default function Practice() {
   //from homepage
   const { state } = useLocation();
-  const { cluster, level } = state;
+  const { level } = state;
+  const [cluster, setCluster] = React.useState(state.cluster);
 
   //from context
   const { selectedSquare } = useSelectedSquare();
 
   //this display
   const [questionWord, setQuestionWord] = React.useState(cluster[0]);
-  const [displayedAnswer, setDisplayedAnswer] = React.useState({});
+  //   const [displayedAnswer, setDisplayedAnswer] = React.useState({});
+
+  //   const [answers, setAnswers] = React.useState([]);
 
   React.useEffect(() => {
     //shuffle cluster on start
@@ -39,16 +42,13 @@ export default function Practice() {
   }
 
   function checkGuess(str) {
-    // console.log('selectedSquare', selectedSquare)
-    //check if guess matches any one char of the currentWord
-    console.log("check guess");
     if (questionWord.Chinese.includes(selectedSquare)) {
-      const keys = Object.keys(displayedAnswer);
-      const index = questionWord.Chinese.indexOf(selectedSquare);
-      setDisplayedAnswer((prev) => ({
-        ...prev,
-        [keys[index]]: selectedSquare,
-      }));
+      console.log("correct!");
+      // setAnswers((prev) => prev, selectedSquare);
+      const updatedCluster = cluster.filter((word) => word != questionWord);
+      setCluster(updatedCluster);
+
+      getNextWord();
       //add another condition for enabling next button when word completes
     } else {
       console.log("wrong character");
