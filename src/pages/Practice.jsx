@@ -18,8 +18,8 @@ export default function Practice() {
   const [questionWord, setQuestionWord] = React.useState(cluster[0]);
   const [questionBank, setQuestionBank] = React.useState(cluster);
 
-  //answer log
-  // const [answered, setAnswered] = React.useState([]);
+  //game log
+  const [gameOver, setGameOver] = React.useState(false);
 
   React.useEffect(() => {
     //shuffle cluster on start
@@ -33,6 +33,10 @@ export default function Practice() {
   }, [selectedSquare]);
 
   function getNextWord() {
+    if (questionBank.length < 1) {
+      setGameOver(false);
+      //round over animation
+    }
     const wordsLeft = questionBank.filter((word) => word != questionWord);
     setQuestionBank(wordsLeft);
     const randWord =
