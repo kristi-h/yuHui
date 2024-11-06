@@ -1,9 +1,6 @@
 import React, { useMemo } from "react";
 import Grid from "../components/Grid";
-import {
-  SelectedSquareProvider,
-  useSelectedSquare,
-} from "../contexts/SelectedSquareContext";
+import { useSelectedSquare } from "../contexts/SelectedSquareContext";
 import { useLocation } from "react-router-dom";
 // import AnswerBlock from '../components/AnswerBlock'
 import { shuffle } from "./Home";
@@ -19,9 +16,10 @@ export default function Practice() {
 
   //this display
   const [questionWord, setQuestionWord] = React.useState(cluster[0]);
-  //   const [displayedAnswer, setDisplayedAnswer] = React.useState({});
+  const [questionBank, setQuestionBank] = React.useState(cluster);
 
-  //   const [answers, setAnswers] = React.useState([]);
+  //answer log
+  // const [answered, setAnswered] = React.useState([]);
 
   React.useEffect(() => {
     //shuffle cluster on start
@@ -35,19 +33,18 @@ export default function Practice() {
   }, [selectedSquare]);
 
   function getNextWord() {
-    setQuestionWord((prevWord) => {
-      const currentIndex = cluster.indexOf(prevWord);
-      return cluster[(currentIndex + 1) % cluster.length];
-    });
+    const wordsLeft = questionBank.filter((word) => word != questionWord);
+    setQuestionBank(wordsLeft);
+    const randWord =
+      questionBank[Math.floor(Math.random() * questionBank.length)];
+    setQuestionWord(randWord);
+    return questionWord;
   }
 
   function checkGuess(str) {
     if (questionWord.Chinese.includes(selectedSquare)) {
       console.log("correct!");
-      // setAnswers((prev) => prev, selectedSquare);
-      const updatedCluster = cluster.filter((word) => word != questionWord);
-      setCluster(updatedCluster);
-
+      // setAnswered((prev) => prev, selectedSquare);
       getNextWord();
       //add another condition for enabling next button when word completes
     } else {
