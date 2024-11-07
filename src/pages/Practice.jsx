@@ -24,7 +24,7 @@ export default function Practice() {
   React.useEffect(() => {
     //shuffle cluster on start
     shuffle(cluster);
-  }, [cluster]);
+  }, [cluster, questionWord]);
   console.log("questionWord", questionWord);
 
   React.useEffect(() => {
