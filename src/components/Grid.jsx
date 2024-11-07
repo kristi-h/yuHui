@@ -9,8 +9,8 @@ export default function Grid({ level, cluster, currentWord }) {
 
   React.useEffect(() => {
     const refreshGrid = () => {
-      shuffle(cluster);
       setGridChar(getGrid());
+      shuffle(cluster);
     };
     refreshGrid();
   }, [currentWord]);

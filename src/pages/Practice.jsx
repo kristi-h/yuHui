@@ -33,20 +33,22 @@ export default function Practice() {
   }, [selectedSquare]);
 
   function getNextWord() {
-    const wordsLeft = questionBank.filter((word) => word != questionWord);
+    const wordsLeft = questionBank.filter(
+      (word) => word != questionWord.Chinese
+    );
     setQuestionBank(wordsLeft);
     if (questionBank.length < 1) {
       setGameOver(false);
       console.log("You finished the round, congrats!");
       //round over animation
-      const randWord =
-        questionBank[Math.floor(Math.random() * questionBank.length)];
-      setQuestionWord(randWord);
-      return questionWord;
     }
+    const randWord =
+      questionBank[Math.floor(Math.random() * questionBank.length)];
+    setQuestionWord(randWord);
+    return questionWord;
   }
 
-  function checkGuess(str) {
+  function checkGuess() {
     if (questionWord.Chinese.includes(selectedSquare)) {
       console.log("correct!");
       // setAnswered((prev) => prev, selectedSquare);
