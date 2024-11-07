@@ -33,16 +33,17 @@ export default function Practice() {
   }, [selectedSquare]);
 
   function getNextWord() {
-    if (questionBank.length < 1) {
-      setGameOver(false);
-      //round over animation
-    }
     const wordsLeft = questionBank.filter((word) => word != questionWord);
     setQuestionBank(wordsLeft);
-    const randWord =
-      questionBank[Math.floor(Math.random() * questionBank.length)];
-    setQuestionWord(randWord);
-    return questionWord;
+    if (questionBank.length < 1) {
+      setGameOver(false);
+      console.log("You finished the round, congrats!");
+      //round over animation
+      const randWord =
+        questionBank[Math.floor(Math.random() * questionBank.length)];
+      setQuestionWord(randWord);
+      return questionWord;
+    }
   }
 
   function checkGuess(str) {
@@ -50,7 +51,6 @@ export default function Practice() {
       console.log("correct!");
       // setAnswered((prev) => prev, selectedSquare);
       getNextWord();
-      //add another condition for enabling next button when word completes
     } else {
       console.log("wrong character");
     }
