@@ -152,7 +152,6 @@
 
 /*------------------Grid ---------------------------------------------------------------------*/
 
-/* Main Grid Container Styling */
 .grid-container {
   display: grid;
   grid-template-columns: repeat(
@@ -160,59 +159,43 @@
     minmax(60px, 1fr)
   ); /* Adjust for different levels */
   gap: 8px;
-  background: #e8cda7; /* Light wood tone */
+  background-image: url("/assets/wood_texture_3.jpg");
+  background-size: cover;
+  background-position: center;
   border: 2px solid #5b3923; /* Dark wood frame */
   padding: 16px;
   border-radius: 8px;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
 
-/* Individual Grid Square Styling */
-.grid-square {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #d4a373; /* Lighter wood tone */
-  color: #3b2d1f; /* Dark brown for character text */
-  font-family: "Serif", serif; /* Elegant font for characters */
-  font-size: 1.5rem;
-  font-weight: bold;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease;
-}
-
-/* Hover Effect */
-.grid-square:hover {
-  transform: scale(1.05);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 /*-----------------GridSquare------------------------------------*/
 
 .grid-square {
-  background-color: #d2a679;
-  background-image: linear-gradient(135deg, #d2a679, #a47543);
-  border: 1px solid #8b5a2b;
-  border-radius: 4px;
-  padding: 10px 12px;
+  background-image: url("/assets/wood_texture_3.jpg");
+  background-size: cover;
+  background-position: center;
+  border: 3px solid #8b5a2b; /* Thicker border for added depth */
+  border-radius: 6px;
+  padding: 12px 14px;
   color: #3d2c1e;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2),
-    0px 8px 15px rgba(0, 0, 0, 0.1) inset;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+  /* Dramatically enhanced box-shadow for deeper 3D effect */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6),
+    /* Main deep shadow for depth */ inset 0px 3px 8px rgba(255, 255, 255, 0.7),
+    /* Inner highlight at top */ inset 0px -4px 8px rgba(0, 0, 0, 0.4); /* Bottom shadow for depth */
 }
 
 .grid-square:hover {
-  transform: translateY(-2px);
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3),
-    0px 10px 20px rgba(0, 0, 0, 0.15) inset;
+  transform: translateY(-5px); /* Raised further on hover */
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.65),
+    /* Deepened shadow on hover */ inset 0px 4px 10px rgba(255, 255, 255, 0.75),
+    /* Brightened highlight */ inset 0px -5px 10px rgba(0, 0, 0, 0.45);
 }
 
 .grid-square:active {
   transform: translateY(1px);
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) inset;
+  box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.5); /* Pressed shadow */
 }
