@@ -1,4 +1,4 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -31,26 +31,85 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
 .clusters-btn {
   color: white;
   border-color: white;
 }
 
+/* Background */
+.home-container {
+  background-image: url("/path/to/peony-and-butterflies.jpg");
+  background-color: #f5f0e6;
+  background-blend-mode: multiply;
+}
+
+/* Scroll Box Styling */
+.scroll-box {
+  background-color: rgba(253, 246, 227, 0.9); /* Light parchment color */
+  border: 2px solid #8b4513; /* Dark brown border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  max-width: 600px;
+  text-align: center;
+}
+
+/* Typography */
+.title {
+  font-size: 2rem;
+  font-family: "Noto Serif SC", serif; /* Traditional font */
+  color: #8b4513;
+  margin-bottom: 20px;
+}
+
+/* Button Styles */
+.level-btn {
+  background-color: #a94444; /* Lacquer red */
+  color: #fff;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  margin: 0 5px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.level-btn:hover {
+  background-color: #8b3a3a; /* Darker red */
+}
+
+.clusters-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.clusters-btn {
+  background-color: #8b4513;
+  color: #fef6e4;
+  font-size: 1.2rem;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.clusters-btn:hover {
+  transform: scale(1.1);
+  background-color: #6a3c1d;
+}
+
 /* ------Practice page------------------------------------------*/
-
-
 
 .grid-container {
   display: grid;
   /* width: 400px;
   height: 400px; */
-  grid-gap: 10px; 
+  grid-gap: 10px;
 }
 
 #difficult {
-  grid-template-rows:  1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   /* grid-template-columns: repeat(4, 1fr); */
 }
@@ -73,8 +132,8 @@
   border: 1px solid white;
   background-color: lightgray;
   color: #646cffaa;
-  margin: 1.2em .8em;
-  border-radius: .8em;
+  margin: 1.2em 0.8em;
+  border-radius: 0.8em;
   font-size: 2rem;
   padding: 1em 1em;
 }
@@ -91,21 +150,63 @@
   margin-right: 52em;
 }
 
-/* ------Answer Block------------------------------------------*/
-.answer-container {
-  height: 200px;
-  margin: 4em 4em;
-  font-size: large;
+/*------------------Grid ---------------------------------------------------------------------*/
+
+/* Main Grid Container Styling */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(
+    4,
+    minmax(60px, 1fr)
+  ); /* Adjust for different levels */
+  gap: 8px;
+  background: #e8cda7; /* Light wood tone */
+  border: 2px solid #5b3923; /* Dark wood frame */
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
 }
 
-#one {
-  grid-template-columns: repeat(1, 1fr);
+/* Individual Grid Square Styling */
+.grid-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #d4a373; /* Lighter wood tone */
+  color: #3b2d1f; /* Dark brown for character text */
+  font-family: "Serif", serif; /* Elegant font for characters */
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
 }
 
-#two {
-  grid-template-columns: repeat(2, 1fr);
+/* Hover Effect */
+.grid-square:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-#three {
-  grid-template-columns: repeat(3, 1fr);
+/*-----------------GridSquare------------------------------------/*
+
+/* Styles for each grid square button */
+.grid-square {
+  background-color: #d4a373; /* Light wood tone */
+  color: #3b2d1f; /* Dark brown for text */
+  font-family: "Noto Serif", serif; /* Elegant, brush-stroke-like font */
+  font-size: 1.8rem;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.grid-square:hover {
+  transform: scale(1.05);
+  background-color: #b27b4c; /* Darker wood on hover */
 }

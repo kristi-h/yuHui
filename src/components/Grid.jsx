@@ -1,13 +1,11 @@
-import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import "../App.jsx";
-import { GridSquare } from "./GridSquare";
+// import React, { useEffect, useState } from "react";
 import { shuffle } from "../pages/Home";
+import GridSquare from "./GridSquare";
 
 export default function Grid({ level, cluster, currentWord }) {
   const [gridChar, setGridChar] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const refreshGrid = () => {
       setGridChar(getGrid());
       shuffle(cluster);
@@ -39,13 +37,13 @@ export default function Grid({ level, cluster, currentWord }) {
   }
 
   const createGrid = () => {
-    return gridChar
-      .filter((char) => char)
-      .map((char, index) => <GridSquare key={index} char={char.Chinese} />);
+    return gridChar.map((char, index) => (
+      <GridSquare key={index} char={char.Chinese} />
+    ));
   };
 
   return (
-    <div className="grid-container" id={level}>
+    <div className="grid-container">
       {gridChar && gridChar.length > 0 && createGrid()}
     </div>
   );
