@@ -189,24 +189,30 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-/*-----------------GridSquare------------------------------------/*
+/*-----------------GridSquare------------------------------------*/
 
-/* Styles for each grid square button */
 .grid-square {
-  background-color: #d4a373; /* Light wood tone */
-  color: #3b2d1f; /* Dark brown for text */
-  font-family: "Noto Serif", serif; /* Elegant, brush-stroke-like font */
-  font-size: 1.8rem;
+  background-color: #d2a679;
+  background-image: linear-gradient(135deg, #d2a679, #a47543);
+  border: 1px solid #8b5a2b;
+  border-radius: 4px;
+  padding: 10px 12px;
+  color: #3d2c1e;
+  font-size: 1.2rem;
   font-weight: bold;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  cursor: pointer;
-  transition: transform 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2),
+    0px 8px 15px rgba(0, 0, 0, 0.1) inset;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .grid-square:hover {
-  transform: scale(1.05);
-  background-color: #b27b4c; /* Darker wood on hover */
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3),
+    0px 10px 20px rgba(0, 0, 0, 0.15) inset;
+}
+
+.grid-square:active {
+  transform: translateY(1px);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25) inset;
 }

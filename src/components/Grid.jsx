@@ -1,6 +1,6 @@
-// import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { shuffle } from "../pages/Home";
-import GridSquare from "./GridSquare";
+import { GridSquare } from "./GridSquare";
 
 export default function Grid({ level, cluster, currentWord }) {
   const [gridChar, setGridChar] = useState([]);
