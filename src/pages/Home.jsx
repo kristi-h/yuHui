@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { hsk3 } from "../hsk3.jsx";
 
@@ -17,75 +17,68 @@ export function shuffle(array) {
 
 export default function Home() {
   const navigate = useNavigate();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const [vocabList, setVocabList] = React.useState(hsk3);
-  const [clusters, setClusters] = React.useState([]);
-  const [level, setLevel] = React.useState("easy");
+  const [vocabList, setVocabList] = useState(hsk3);
+  const [clusters, setClusters] = useState([]);
+  const [level, setLevel] = useState("easy");
+  const [currentDeck, setCurrentDeck] = useState(0);
 
-  React.useEffect(() => {
+  useEffect(() => {
     function createClusters() {
       shuffle(vocabList);
       const clustered = [];
-      for (let i = 0; i < vocabList.length; i++) {
+      for (let i = 0; i < vocabList.length; i += 20) {
         clustered.push(vocabList.slice(i, i + 20));
-        i += 20;
       }
       setClusters(clustered);
     }
     createClusters();
   }, [vocabList]);
 
-  function handleLevelClick(e) {
-    setLevel(e.currentTarget.value);
+  function handleLevelClick(level) {
+    setLevel(level);
   }
 
-  function handleClusterClick(e) {
-    navigate(`/practice/:${parseInt(e.currentTarget.value) + 1}`, {
-      state: {
-        cluster: clusters[e.currentTarget.value],
-        level,
-      },
+  function handleNextDeck() {
+    setCurrentDeck((prev) => (prev + 1) % clusters.length);
+  }
+
+  function handlePrevDeck() {
+    setCurrentDeck((prev) => (prev - 1 + clusters.length) % clusters.length);
+  }
+
+  function handleDeckSelection() {
+    navigate(`/practice/:${currentDeck + 1}`, {
+      state: { cluster: clusters[currentDeck], level },
     });
   }
 
-  function clustersEle() {
-    return clusters.map((_, index) => (
-      <button
-        key={index}
-        onClick={handleClusterClick}
-        className="clusters-btn"
-        value={index}
-      >
-        {index + 1}
-      </button>
-    ));
-  }
-
   return (
-    <div className="home-container min-h-screen flex items-center justify-center bg-cover bg-center">
-      <div className="scroll-box p-6 md:p-12 lg:w-3/4">
-        <h1 className="title">选择你的难度:</h1>
-        <div className="button-group">
-          <button onClick={handleLevelClick} value="easy" className="level-btn">
-            简单
+    <div className="home-center-container">
+      <div className="content-box">
+        <h1 className="title">Select Intensity Level</h1>
+        <div className="centered-carousel">
+          {["easy", "medium", "difficult"].map((lvl) => (
+            <button
+              key={lvl}
+              onClick={() => handleLevelClick(lvl)}
+              className={`level-btn ${level === lvl ? "selected" : ""}`}
+            >
+              {lvl === "easy" ? "简单" : lvl === "medium" ? "中等" : "困难"}
+            </button>
+          ))}
+        </div>
+        <h1 className="title">Select Deck</h1>
+        <div className="deck-carousel">
+          <button className="arrow-btn" onClick={handlePrevDeck}>
+            &lt;
           </button>
-          <button
-            onClick={handleLevelClick}
-            value="medium"
-            className="level-btn"
-          >
-            中等
+          <button className="deck-btn" onClick={handleDeckSelection}>
+            Deck {currentDeck + 1}
           </button>
-          <button
-            onClick={handleLevelClick}
-            value="difficult"
-            className="level-btn"
-          >
-            困难
+          <button className="arrow-btn" onClick={handleNextDeck}>
+            &gt;
           </button>
         </div>
-        <h1 className="title">选择一个簇:</h1>
-        <div className="clusters-container">{clustersEle()}</div>
       </div>
     </div>
   );

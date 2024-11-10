@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Header() {
   return (
-    <header>
-      <Link className="header" to="/">
-        YuHui
-      </Link>
+    <header className="header">
+      <Link to="/">YuHui</Link>
     </header>
   );
 }

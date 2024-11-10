@@ -1,5 +1,5 @@
 .header {
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.2);
   position: relative;
   z-index: 10;
   padding: 1rem 2rem;
@@ -7,24 +7,36 @@
 }
 
 .app-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   min-height: 100vh;
   background-image: url("/assets/classroom.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed; /* Keeps the image static when scrolling */
+  background-attachment: fixed;
 }
 
+/*----------------Home-----------------------------------------------*/
+
 .home-container {
-  background-image: url("/assets/classroom.jpg");
-  background-color: #f5f0e6;
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: none;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  width: 25%;
+  max-width: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Typography */
@@ -69,6 +81,82 @@
 .clusters-btn:hover {
   transform: scale(1.1);
   background-color: #6a3c1d;
+}
+
+/* Centered container */
+.home-center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("/assets/classroom.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.content-box {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Centered carousel */
+.centered-carousel {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Glowing effect for selected level */
+.level-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #444; /* Default button color */
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.level-btn.selected {
+  background-color: #ffde59;
+  box-shadow: 0 0 10px 2px rgba(255, 215, 0, 0.7),
+    0 0 20px 5px rgba(255, 215, 0, 0.5);
+}
+
+/* Deck carousel */
+.deck-carousel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #444;
+  cursor: pointer;
+}
+
+.deck-btn {
+  padding: 10px 20px;
+  border: 2px solid #444;
+  border-radius: 5px;
+  background-color: #6b3a2b;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deck-btn:hover {
+  background-color: #3e1f1f;
 }
 
 /* ------Practice page------------------------------------------*/
@@ -155,7 +243,6 @@
   font-weight: bold;
   transition: transform 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
 
-  /* Dramatically enhanced box-shadow for deeper 3D effect */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.6),
     /* Main deep shadow for depth */ inset 0px 3px 8px rgba(255, 255, 255, 0.7),
     /* Inner highlight at top */ inset 0px -4px 8px rgba(0, 0, 0, 0.4); /* Bottom shadow for depth */
@@ -170,5 +257,5 @@
 
 .grid-square:active {
   transform: translateY(1px);
-  box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.5); /* Pressed shadow */
+  box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.5);
 }
