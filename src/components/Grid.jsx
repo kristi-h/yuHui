@@ -43,7 +43,7 @@ export default function Grid({ level, cluster, currentWord }) {
   };
 
   return (
-    <div className="grid-container">
+    <div className={`grid-container ${level}`}>
       {gridChar && gridChar.length > 0 && createGrid()}
     </div>
   );
