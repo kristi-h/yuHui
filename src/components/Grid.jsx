@@ -4,6 +4,7 @@ import { GridSquare } from "./GridSquare";
 
 export default function Grid({ level, cluster, currentWord }) {
   const [gridChar, setGridChar] = useState([]);
+  const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
   useEffect(() => {
     const refreshGrid = () => {
@@ -29,10 +30,13 @@ export default function Grid({ level, cluster, currentWord }) {
   }
 
   function addCurrentWord(tempGrid) {
-    if (!tempGrid.includes(currentWord)) {
-      tempGrid.pop();
-      tempGrid.push(currentWord);
-    }
+    let newAnswerIndex;
+    do {
+      newAnswerIndex = Math.floor(Math.random() * tempGrid.length);
+    } while (newAnswerIndex === prevAnswerIndex);
+
+    tempGrid[newAnswerIndex] = currentWord;
+    setPrevAnswerIndex(newAnswerIndex);
     return tempGrid;
   }
 
