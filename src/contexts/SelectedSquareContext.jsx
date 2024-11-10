@@ -4,6 +4,7 @@ const SelectedSquareContext = createContext();
 
 export const SelectedSquareProvider = ({ children }) => {
   let [selectedSquare, setSelectedSquare] = useState({});
+  const resetSelectedSquare = () => setSelectedSquare(null);
 
   useEffect(() => {
     console.log("selectedSquare updated:", selectedSquare);
@@ -17,7 +18,12 @@ export const SelectedSquareProvider = ({ children }) => {
 
   return (
     <SelectedSquareContext.Provider
-      value={{ selectedSquare, setSelectedSquare, handleClick }}
+      value={{
+        selectedSquare,
+        setSelectedSquare,
+        handleClick,
+        resetSelectedSquare,
+      }}
     >
       {children}
     </SelectedSquareContext.Provider>

@@ -11,7 +11,7 @@ export default function Practice() {
   const [cluster, setCluster] = useState(state.cluster);
 
   //from context
-  const { selectedSquare } = useSelectedSquare();
+  const { selectedSquare, resetSelectedSquare } = useSelectedSquare();
 
   // Display states
   const [questionWord, setQuestionWord] = useState(cluster[0]);
@@ -38,10 +38,12 @@ export default function Practice() {
     }
     const randWord = wordsLeft[Math.floor(Math.random() * wordsLeft.length)];
     setQuestionWord(randWord);
+    resetSelectedSquare();
   }
 
   function checkGuess() {
-    if (questionWord.Chinese.includes(selectedSquare)) {
+    if (gameOver) return;
+    if (selectedSquare && questionWord.Chinese.includes(selectedSquare)) {
       console.log("correct!");
       getNextWord();
     } else {
