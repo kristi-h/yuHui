@@ -28,9 +28,10 @@ export default function Practice() {
 
   function getNextWord() {
     const wordsLeft = questionBank.filter(
-      (word) => word !== questionWord.Chinese
+      (word) => word.Chinese !== questionWord.Chinese
     );
     setQuestionBank(wordsLeft);
+
     if (wordsLeft.length < 1) {
       setGameOver(true);
       console.log("You finished the round, congrats!");

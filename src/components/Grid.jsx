@@ -18,13 +18,13 @@ export default function Grid({ level, cluster, currentWord }) {
     let tempGrid;
     switch (level) {
       case "difficult":
-        tempGrid = cluster.slice(0, 16);
+        tempGrid = cluster.filter((word) => word !== currentWord).slice(0, 15);
         break;
       case "medium":
-        tempGrid = cluster.slice(0, 9);
+        tempGrid = cluster.filter((word) => word !== currentWord).slice(0, 8);
         break;
       default:
-        tempGrid = cluster.slice(0, 4);
+        tempGrid = cluster.filter((word) => word !== currentWord).slice(0, 3);
     }
     return addCurrentWord(tempGrid);
   }
@@ -32,10 +32,10 @@ export default function Grid({ level, cluster, currentWord }) {
   function addCurrentWord(tempGrid) {
     let newAnswerIndex;
     do {
-      newAnswerIndex = Math.floor(Math.random() * tempGrid.length);
+      newAnswerIndex = Math.floor(Math.random() * tempGrid.length + 1);
     } while (newAnswerIndex === prevAnswerIndex);
 
-    tempGrid[newAnswerIndex] = currentWord;
+    tempGrid.splice(newAnswerIndex, 0, currentWord);
     setPrevAnswerIndex(newAnswerIndex);
     return tempGrid;
   }
