@@ -3,6 +3,15 @@
   position: relative;
   z-index: 10;
   padding: 1rem 2rem;
+  color: inherit;
+}
+
+.app-container {
+  min-height: 100vh;
+  background-image: url("/assets/classroom.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Keeps the image static when scrolling */
 }
 
 .home-container {
