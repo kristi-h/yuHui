@@ -56,13 +56,13 @@ export default function Practice() {
 
   return (
     <div className="practice-container">
-      <h3 className="question_word">
+      <h3 className="question-word">
         English Word:{" "}
         <span className="font-serif text-[#7a3e19]">
           {questionWord.English}
         </span>
       </h3>
-      <h3 className="question_word">
+      <h3 className="question-word">
         Pinyin: <span>{questionWord.Pinyin}</span>
       </h3>
 
