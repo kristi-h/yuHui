@@ -168,11 +168,27 @@
 
 /* ------Practice page------------------------------------------*/
 
+.question-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(90, 17, 17, 0.6);
+  width: 50vw;
+  border-radius: 30px;
+  margin: auto;
+  margin-top: 2em;
+  padding: 1em;
+}
+
 .question-word {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #fffdd0;
+  font-weight: bold;
+  font-size: 1.5em;
+  font-family: "Noto Serif SC", serif;
 }
 
 .grid-container.difficult {
@@ -202,16 +218,21 @@
 }
 
 .btn {
-  background-color: #646cffaa;
-  padding: 10px 15px;
-  color: white;
+  display: block;
+  background-color: rgb(90, 17, 17);
+  justify-content: center;
+  align-items: center;
+  padding: 10px 10px;
+  color: #fffdd0;
   text-decoration: none;
+  margin-top: 2em;
+  width: 10em;
+  margin: auto;
 }
 
-.prev-btn {
-  margin-left: -12em;
-  margin-right: 52em;
-}
+/* .previous {
+  margin-right: 2em;
+} */
 
 /*------------------Grid ---------------------------------------------------------------------*/
 
@@ -221,6 +242,8 @@
   grid-gap: 10px;
   display: grid;
   margin: auto;
+  margin-top: 5em;
+  /* padding-top: 15em; */
   grid-template-columns: repeat(4, minmax(60px, 1fr));
   gap: 8px;
   background-image: url("/assets/wood_texture_3.jpg");
