@@ -115,8 +115,8 @@
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #444; /* Default button color */
-  color: white;
+  background-color: #fffdd0;
+  color: rgb(90, 17, 17);
   font-weight: bold;
   cursor: pointer;
   transition: all 0.3s;
