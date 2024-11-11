@@ -34,7 +34,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
-  width: 25%;
+  width: 40%;
   max-width: 400px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -161,18 +161,6 @@
 
 /* ------Practice page------------------------------------------*/
 
-.grid-container {
-  display: grid;
-  grid-gap: 10px;
-  display: grid;
-  gap: 8px;
-  background-image: url("/assets/wood_texture_3.jpg");
-  border: 2px solid #5b3923;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
-}
-
 .grid-container.difficult {
   grid-template-columns: repeat(4, minmax(60px, 1fr));
 }
@@ -214,19 +202,19 @@
 /*------------------Grid ---------------------------------------------------------------------*/
 
 .grid-container {
+  width: 80vw;
+  grid-gap: 10px;
   display: grid;
-  grid-template-columns: repeat(
-    4,
-    minmax(60px, 1fr)
-  ); /* Adjust for different levels */
+  margin: auto;
+  grid-template-columns: repeat(4, minmax(60px, 1fr));
   gap: 8px;
   background-image: url("/assets/wood_texture_3.jpg");
   background-size: cover;
   background-position: center;
-  border: 2px solid #5b3923; /* Dark wood frame */
+  border: 2px solid #5b3923;
   padding: 16px;
   border-radius: 8px;
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
 }
 
 /*-----------------GridSquare------------------------------------*/
