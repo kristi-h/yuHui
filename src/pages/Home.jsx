@@ -55,7 +55,7 @@ export default function Home() {
   return (
     <div className="home-center-container">
       <div className="content-box">
-        <h1 className="title">Select Intensity Level</h1>
+        <h1 className="home-title">Intensity: </h1>
         <div className="centered-carousel">
           {["easy", "medium", "difficult"].map((lvl) => (
             <button
@@ -67,7 +67,7 @@ export default function Home() {
             </button>
           ))}
         </div>
-        <h1 className="title">Select Deck</h1>
+        <h1 className="home-title">Deck: </h1>
         <div className="deck-carousel">
           <button className="arrow-btn" onClick={handlePrevDeck}>
             &lt;

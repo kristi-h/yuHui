@@ -63,6 +63,7 @@ export default function Practice() {
             {questionWord.English}
           </span>
         </h3>
+        <br></br>
         <h3 className="question-word">
           Pinyin: <span>{questionWord.Pinyin}</span>
         </h3>
