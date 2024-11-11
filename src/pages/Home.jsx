@@ -73,7 +73,13 @@ export default function Home() {
             &lt;
           </button>
           <button className="deck-btn" onClick={handleDeckSelection}>
-            Deck {currentDeck + 1}
+            {currentDeck + 1} 号
+          </button>
+          <button className="deck-btn" onClick={handleDeckSelection}>
+            {currentDeck + 2} 号
+          </button>
+          <button className="deck-btn" onClick={handleDeckSelection}>
+            {currentDeck + 3} 号
           </button>
           <button className="arrow-btn" onClick={handleNextDeck}>
             &gt;
