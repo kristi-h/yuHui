@@ -57,27 +57,19 @@ export default function Practice() {
   return (
     <div className="practice-container">
       <div className="question-container">
-        <h3 className="question-word">
-          English Word:{" "}
-          <span className="font-serif text-[#7a3e19]">
-            {questionWord.English}
-          </span>
-        </h3>
-        <br></br>
-        <h3 className="question-word">
-          Pinyin: <span>{questionWord.Pinyin}</span>
-        </h3>
+        <h3 className="english-word">English: {questionWord.English}</h3>
+        <h3 className="pinyin-word">Pinyin: {questionWord.Pinyin}</h3>
       </div>
 
       <div className="mb-8">
         <Grid level={level} cluster={cluster} currentWord={questionWord} />
       </div>
 
-      <div className="flex justify-around">
-        <button className="previous btn" onClick={getNextWord}>
+      <div className="btns-container">
+        <button className="btn" onClick={getNextWord}>
           Previous
         </button>
-        <button className="next btn" onClick={getNextWord}>
+        <button className="btn" onClick={getNextWord}>
           Next
         </button>
       </div>
