@@ -74,6 +74,9 @@ export default function Practice() {
     <div className="practice-container">
       {gameOver ? (
         <>
+          <h1 className="congrats-title">
+            真棒! You successfully completed your deck!
+          </h1>
           <AnimatePresence>
             <motion.div
               key="checkmark-animation"
