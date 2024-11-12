@@ -2,17 +2,19 @@ import React, { useEffect, useState } from "react";
 import { shuffle } from "../pages/Home";
 import { GridSquare } from "./GridSquare";
 
-export default function Grid({ level, cluster, currentWord }) {
+export default function Grid({ level, cluster, currentWord, gameOver }) {
   const [gridChar, setGridChar] = useState([]);
   const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
   useEffect(() => {
-    const refreshGrid = () => {
-      setGridChar(getGrid());
-      shuffle(cluster);
-    };
-    refreshGrid();
-  }, [currentWord]);
+    if (!gameOver) {
+      const refreshGrid = () => {
+        setGridChar(getGrid());
+        shuffle(cluster);
+      };
+      refreshGrid();
+    }
+  }, [currentWord, gameOver]);
 
   function getGrid() {
     let tempGrid;
@@ -40,15 +42,13 @@ export default function Grid({ level, cluster, currentWord }) {
     return tempGrid;
   }
 
-  const createGrid = () => {
-    return gridChar.map((char, index) => (
-      <GridSquare key={index} char={char.Chinese} />
-    ));
-  };
-
   return (
     <div className={`grid-container ${level}`}>
-      {gridChar && gridChar.length > 0 && createGrid()}
+      {!gameOver && gridChar.length > 0
+        ? gridChar.map((char, index) => (
+            <GridSquare key={index} char={char.Chinese} />
+          ))
+        : `Congrats!! You completed deck ${cluster} successfully!`}
     </div>
   );
 }
