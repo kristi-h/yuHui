@@ -8,7 +8,7 @@
 
 .header-title {
   color: rgb(90, 17, 17);
-  font-size: 3.5rem; /* Adjust size as desired */
+  font-size: 3.5rem;
   font-weight: bold;
   font-family: "Noto Serif SC", serif;
 }
@@ -210,8 +210,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2em; /* Adds the 2em space between buttons */
-  margin-top: 2em; /* Centers vertically */
+  gap: 2em;
+  margin-top: 2em;
 }
 
 .btn {
@@ -303,4 +303,8 @@
 /*------------Game End----------------------------------------------*/
 .congrats-message {
   color: red;
+}
+
+.gif {
+  margin: auto;
 }

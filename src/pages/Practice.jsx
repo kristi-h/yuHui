@@ -15,10 +15,6 @@ export default function Practice() {
   const [questionWord, setQuestionWord] = useState(cluster[0]);
   const [questionBank, setQuestionBank] = useState(cluster);
   const [gameOver, setGameOver] = useState(false);
-  const [checkmarkPosition, setCheckmarkPosition] = useState({
-    x: "50%",
-    y: "50%",
-  });
 
   useEffect(() => {
     shuffle(cluster);
@@ -31,9 +27,7 @@ export default function Practice() {
   useEffect(() => {
     if (gameOver) {
       console.log("Game over! Triggering animation...");
-      startCheckmarkAnimation();
     }
-    return () => clearInterval(checkmarkAnimationInterval);
   }, [gameOver]);
 
   function getNextWord() {
@@ -76,19 +70,6 @@ export default function Practice() {
     navigate("/");
   }
 
-  function generateRandomPosition() {
-    const x = Math.random() * 80 + 10 + "%";
-    const y = Math.random() * 80 + 10 + "%";
-    return { x, y };
-  }
-
-  let checkmarkAnimationInterval;
-  function startCheckmarkAnimation() {
-    checkmarkAnimationInterval = setInterval(() => {
-      setCheckmarkPosition(generateRandomPosition());
-    }, 1000);
-  }
-
   return (
     <div className="practice-container">
       {gameOver ? (
@@ -96,44 +77,23 @@ export default function Practice() {
           <AnimatePresence>
             <motion.div
               key="checkmark-animation"
-              className="grid-container flex items-center justify-center relative overflow-hidden"
+              className="grid-container fixed inset-0 flex items-center justify-center"
+              style={{
+                width: "140%",
+                height: "140%",
+                maxWidth: "10em",
+                maxHeight: "10em",
+              }}
+              initial={{ scale: 0 }}
+              animate={{ scale: [1, 1.5, 1], rotate: [0, -10, 10, 0] }}
+              transition={{ duration: 0.8, repeat: Infinity }}
             >
-              <motion.span
-                className="absolute text-green-500"
-                style={{ fontSize: "12em" }}
-                animate={{
-                  x: checkmarkPosition.x,
-                  y: checkmarkPosition.y,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.5,
-                  ease: "easeInOut",
-                }}
-              >
-                ✔️
-              </motion.span>
-              <motion.div
-                className="congrats-message text-center text-5xl font-bold mt-8"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  scale: [1, 1.1, 1],
-                  color: ["#ff0000", "#ff3333"],
-                  textShadow: [
-                    "0 0 5px rgba(255, 0, 0, 0.8)",
-                    "0 0 15px rgba(255, 255, 255, 0.8)",
-                  ],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  repeatType: "reverse",
-                  duration: 0.6,
-                  ease: "easeInOut",
-                }}
-              >
-                🎉 Congrats!! You completed deck successfully! 🎉
-              </motion.div>
+              <motion.img
+                src="/assets/congrats.gif"
+                alt="Congratulations"
+                style={{ width: "10em", height: "10em" }}
+                className="gif"
+              />
             </motion.div>
           </AnimatePresence>
 
@@ -167,7 +127,7 @@ export default function Practice() {
               Next
             </button>
             <button className="btn" onClick={handleGameOver}>
-              Game over
+              GameOver
             </button>
           </div>
         </>
