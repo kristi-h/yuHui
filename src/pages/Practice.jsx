@@ -104,7 +104,7 @@ export default function Practice() {
             </motion.div>
           </AnimatePresence>
 
-          <Scoreboard incorrect={incorrect} />
+          <Scoreboard cluster={cluster} incorrect={incorrect} />
 
           <div className="btns-container mt-8">
             <div className="flex justify-center mt-4 space-x-4">
