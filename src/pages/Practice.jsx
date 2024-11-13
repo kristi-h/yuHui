@@ -70,15 +70,17 @@ export default function Practice() {
 
   function handleSelectNewDeck() {
     navigate("/");
+    setIncorrect([]);
   }
 
   return (
     <div className="practice-container">
       {gameOver ? (
-        <>
+        <div className="game-over-container">
           <h1 className="congrats-title">
             真棒! You successfully completed your deck!
           </h1>
+
           <AnimatePresence>
             <motion.div
               key="checkmark-animation"
@@ -103,6 +105,7 @@ export default function Practice() {
           </AnimatePresence>
 
           <Scoreboard incorrect={incorrect} />
+
           <div className="btns-container mt-8">
             <div className="flex justify-center mt-4 space-x-4">
               <button className="btn" onClick={handleRepeatDeck}>
@@ -113,7 +116,7 @@ export default function Practice() {
               </button>
             </div>
           </div>
-        </>
+        </div>
       ) : (
         <>
           <div className="question-container">
