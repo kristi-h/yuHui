@@ -3,11 +3,15 @@ export default function Scoreboard({ incorrect }) {
     <div className="scoreboard">
       <h1>Scoreboard</h1>
       <h4>Words you got incorrect: </h4>
-      <ul>
+      <div className="incorrect-table">
         {incorrect.map((word, index) => (
-          <li key={index}>{word}</li>
+          <div key={index} className="incorrect-table-item">
+            <p>
+              {word.Chinese} - {word.Pinyin} - {word.English}
+            </p>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
