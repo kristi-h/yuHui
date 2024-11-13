@@ -193,18 +193,6 @@
   grid-template-columns: 1fr 1fr;
 }
 
-.grid-square {
-  height: 4em;
-  width: 6em;
-  border: 1px solid white;
-  background-color: lightgray;
-  color: #646cffaa;
-  margin: 1.2em 0.8em;
-  border-radius: 0.8em;
-  font-size: 2rem;
-  padding: 1em 1em;
-}
-
 .btns-container {
   display: flex;
   justify-content: center;
@@ -217,7 +205,7 @@
   background-color: rgba(90, 17, 17, 0.85);
   color: #fffdd0;
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 20%;
   width: 10em;
   text-align: center;
 }
@@ -249,6 +237,8 @@
   background-image: url("/assets/wood_texture_3.jpg");
   background-size: cover;
   background-position: center;
+  height: 4em;
+  width: 6em;
   border: 4px solid #8b5a2b;
   border-radius: 10px;
   padding: 12px 14px;
@@ -273,31 +263,79 @@
   box-shadow: inset 0px 3px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* @media (max-width: 768px) {
+@media (min-width: 300px) {
   .grid-container {
-    width: 90vw;
-    padding: 1.5vw;
+    width: 70vw;
+    padding: 0.5vw;
   }
 
   .grid-square {
-    height: 9vw;
-    width: 14vw;
-    font-size: 1.8vw;
+    height: 11vw;
+    width: 17vw;
+    font-size: 3vw;
   }
 }
 
-@media (max-width: 480px) {
+@media (min-width: 480px) {
   .grid-container {
     width: 95vw;
-    padding: 1vw;
+    padding: 2vw;
+  }
+
+  .grid-square {
+    height: 10vw;
+    width: 14vw;
+    font-size: 3vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    padding: 4rem 5rem;
+  }
+
+  .header-title {
+    font-size: 12rem;
+  }
+
+  .grid-container {
+    width: 70vw;
+    padding: 0.7vw;
   }
 
   .grid-square {
     height: 5vw;
     width: 9vw;
-    font-size: 2vw;
+    font-size: 3.8vw;
+    margin: 1em 1em;
   }
-} */
+
+  .btns-container {
+    gap: 2em;
+    margin-top: 1em;
+  }
+
+  .btn {
+    padding: 5px;
+    width: 20em;
+    height: 2em;
+    font-size: 4em;
+  }
+
+  .question-container {
+    width: 50vw;
+    height: 9vh;
+    border-radius: 40px;
+    margin-top: 5em;
+    padding: 1em;
+  }
+
+  .english-word,
+  .pinyin-word {
+    margin: 1em 0;
+    font-size: 4em;
+  }
+}
 
 /*------------Game End----------------------------------------------*/
 .game-over-container {
