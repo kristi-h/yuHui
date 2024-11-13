@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import Grid from "../components/Grid";
+import Scoreboard from "../components/Scoreboard";
 import { useSelectedSquare } from "../contexts/SelectedSquareContext";
 import { useLocation } from "react-router-dom";
 import { shuffle } from "./Home";
@@ -11,6 +12,7 @@ export default function Practice() {
   const { state } = useLocation();
   const { level } = state;
   const [cluster] = useState(state.cluster);
+  const [incorrect, setIncorrect] = useState([]);
   const { selectedSquare, resetSelectedSquare } = useSelectedSquare();
   const [questionWord, setQuestionWord] = useState(cluster[0]);
   const [questionBank, setQuestionBank] = useState(cluster);
@@ -23,12 +25,6 @@ export default function Practice() {
   useEffect(() => {
     checkGuess();
   }, [selectedSquare]);
-
-  useEffect(() => {
-    if (gameOver) {
-      console.log("Game over! Triggering animation...");
-    }
-  }, [gameOver]);
 
   function getNextWord() {
     const wordsLeft = questionBank.filter(
@@ -52,7 +48,12 @@ export default function Practice() {
       console.log("correct!");
       getNextWord();
     } else {
-      console.log("wrong character");
+      console.log("selectedSquare", selectedSquare);
+      if (!incorrect.includes(questionWord.Chinese)) {
+        setIncorrect((prev) => {
+          return [...prev, questionWord.Chinese];
+        });
+      }
     }
   }
 
@@ -64,6 +65,7 @@ export default function Practice() {
     setGameOver(false);
     setQuestionBank(cluster);
     setQuestionWord(cluster[0]);
+    setIncorrect([]);
   }
 
   function handleSelectNewDeck() {
@@ -100,6 +102,7 @@ export default function Practice() {
             </motion.div>
           </AnimatePresence>
 
+          <Scoreboard incorrect={incorrect} />
           <div className="btns-container mt-8">
             <div className="flex justify-center mt-4 space-x-4">
               <button className="btn" onClick={handleRepeatDeck}>
