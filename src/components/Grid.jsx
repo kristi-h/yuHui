@@ -1,9 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { shuffle } from "../pages/Home";
 import { GridSquare } from "./GridSquare";
+import { motion } from "framer-motion";
 
-export default function Grid({ level, cluster, currentWord, gameOver }) {
-  const [gridChar, setGridChar] = useState([]);
+export default function Grid({
+  level,
+  cluster,
+  currentWord,
+  gameOver,
+  gridChar,
+  setGridChar,
+  onGridAnimationComplete,
+}) {
   const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
   useEffect(() => {
@@ -15,6 +23,19 @@ export default function Grid({ level, cluster, currentWord, gameOver }) {
       refreshGrid();
     }
   }, [currentWord, gameOver]);
+
+  const gridVariants = {
+    initial: { scale: 1, opacity: 1 },
+    jiggle: {
+      scale: [1, 1.05, 0.95, 1],
+      rotate: [0, -5, 5, 0],
+      transition: { duration: 0.5 },
+    },
+    hidden: {
+      opacity: 0,
+      transition: { duration: 0.5 },
+    },
+  };
 
   function getGrid() {
     let tempGrid;
@@ -43,12 +64,21 @@ export default function Grid({ level, cluster, currentWord, gameOver }) {
   }
 
   return (
-    <div className={`grid-container ${level}`}>
-      {!gameOver && gridChar.length > 0
-        ? gridChar.map((char, index) => (
-            <GridSquare key={index} char={char.Chinese} />
-          ))
-        : `Congrats!! You completed deck ${cluster} successfully!`}
-    </div>
+    <motion.div
+      className={`grid-container ${level}`}
+      initial="initial"
+      animate={gameOver ? "jiggle" : "initial"}
+      exit="hidden"
+      variants={gridVariants}
+      onAnimationComplete={() => {
+        if (gameOver) {
+          onGridAnimationComplete();
+        }
+      }}
+    >
+      {gridChar.map((char, index) => (
+        <GridSquare key={index} char={char} gameOver={gameOver} />
+      ))}
+    </motion.div>
   );
 }

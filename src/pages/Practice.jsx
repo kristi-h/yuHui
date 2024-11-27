@@ -18,6 +18,7 @@ export default function Practice() {
   const [questionWord, setQuestionWord] = useState(cluster[0]);
   const [questionBank, setQuestionBank] = useState(cluster);
   const [gameOver, setGameOver] = useState(false);
+  const [gridChar, setGridChar] = useState([]);
 
   useEffect(() => {
     shuffle(cluster);
@@ -82,13 +83,21 @@ export default function Practice() {
           incorrect={incorrect}
           handleRepeatDeck={handleRepeatDeck}
           handleSelectNewDeck={handleSelectNewDeck}
+          gameOver={gameOver}
+          gridChar={gridChar}
         />
       ) : (
         <>
           <Question questionWord={questionWord} />
 
           <div className="mb-8">
-            <Grid level={level} cluster={cluster} currentWord={questionWord} />
+            <Grid
+              level={level}
+              cluster={cluster}
+              currentWord={questionWord}
+              gridChar={gridChar}
+              setGridChar={setGridChar}
+            />
           </div>
 
           <WordController
