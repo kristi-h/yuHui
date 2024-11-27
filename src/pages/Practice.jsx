@@ -57,9 +57,9 @@ export default function Practice() {
     }
   }
 
-  function handleGameOver() {
-    setGameOver(!gameOver);
-  }
+  // function handleGameOver() {
+  //   setGameOver(!gameOver);
+  // }
 
   function handleRepeatDeck() {
     setGameOver(false);
@@ -135,9 +135,9 @@ export default function Practice() {
             <button className="btn" onClick={getNextWord}>
               Next
             </button>
-            <button className="btn" onClick={handleGameOver}>
+            {/* <button className="btn" onClick={handleGameOver}>
               GameOver
-            </button>
+            </button> */}
           </div>
         </>
       )}
