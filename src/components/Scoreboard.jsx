@@ -3,8 +3,6 @@ export default function Scoreboard({ cluster, incorrect }) {
     let tally = cluster.length - incorrect.length;
     if (tally < 0) {
       tally = 0;
-    } else {
-      return;
     }
     return tally;
   }

@@ -51,7 +51,7 @@ export default function Practice() {
       getNextWord();
     } else {
       console.log("selectedSquare", selectedSquare);
-      if (!incorrect.includes(questionWord)) {
+      if (!incorrect.some((word) => word.Chinese === questionWord.Chinese)) {
         setIncorrect((prev) => {
           return [...prev, questionWord];
         });

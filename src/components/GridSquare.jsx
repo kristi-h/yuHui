@@ -1,17 +1,17 @@
 import { motion } from "framer-motion";
 import { useSelectedSquare } from "../contexts/SelectedSquareContext";
 
+const squareVariants = {
+  initial: { y: 0, opacity: 1 },
+  fall: {
+    y: "100vh",
+    opacity: 0,
+    transition: { duration: 0.8, ease: "easeIn" },
+  },
+};
+
 export const GridSquare = ({ char, gameOver }) => {
   const { handleClick } = useSelectedSquare();
-
-  const squareVariants = {
-    initial: { y: 0, opacity: 1 },
-    fall: {
-      y: "100vh",
-      opacity: 0,
-      transition: { duration: 0.8, ease: "easeIn" },
-    },
-  };
 
   return (
     <motion.button
