@@ -28,6 +28,12 @@ export default function Practice() {
     checkGuess();
   }, [selectedSquare]);
 
+  useEffect(() => {
+    return () => {
+      setIncorrect([]);
+    };
+  }, []);
+
   function getNextWord() {
     const wordsLeft = questionBank.filter(
       (word) => word.Chinese !== questionWord.Chinese

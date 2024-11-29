@@ -54,10 +54,6 @@ export default function GameOver({
           </motion.div>
         </>
       )}
-
-      <button className="btn" onClick={!gameOver}>
-        Trigger Game Over
-      </button>
     </div>
   );
 }
