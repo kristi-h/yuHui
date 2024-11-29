@@ -33,7 +33,11 @@ export default function Grid({
     },
     hidden: {
       opacity: 0,
-      transition: { duration: 0.5 },
+      scale: 0.8,
+      transition: {
+        duration: 1,
+        staggerChildren: 0.3,
+      },
     },
   };
 
@@ -67,7 +71,7 @@ export default function Grid({
     <motion.div
       className={`grid-container ${level}`}
       initial="initial"
-      animate={gameOver ? "jiggle" : "initial"}
+      animate={gameOver ? "hidden" : "initial"}
       exit="hidden"
       variants={gridVariants}
       onAnimationComplete={() => {
