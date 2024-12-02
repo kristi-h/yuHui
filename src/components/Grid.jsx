@@ -11,6 +11,7 @@ export default function Grid({
   gridChar,
   setGridChar,
   onGridAnimationComplete,
+  incorrect,
 }) {
   const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
@@ -81,7 +82,12 @@ export default function Grid({
       }}
     >
       {gridChar.map((char, index) => (
-        <GridSquare key={index} char={char} gameOver={gameOver} />
+        <GridSquare
+          key={index}
+          char={char}
+          gameOver={gameOver}
+          incorrect={incorrect}
+        />
       ))}
     </motion.div>
   );

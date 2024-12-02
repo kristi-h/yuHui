@@ -50,17 +50,49 @@ export default function Practice() {
     resetSelectedSquare();
   }
 
+  // const isSquareIncorrect = (square) => {
+  //   return incorrect.some((entry) => entry.guessedWord === square.Chinese);
+  // };
+
+  // function checkGuess() {
+  //   if (gameOver) return;
+  //   if (selectedSquare && questionWord.Chinese.includes(selectedSquare)) {
+  //     console.log("correct!");
+  //     getNextWord();
+  //   } else {
+  //     console.log("selectedSquare", selectedSquare);
+  //     isSquareIncorrect();
+  //     if (
+  //       !incorrect.some(
+  //         (word) => word.questWord.Chinese === questionWord.Chinese
+  //       )
+  //     ) {
+  //       setIncorrect((prev) => [
+  //         ...prev,
+  //         { questWord: questionWord, guessedWord: selectedSquare },
+  //       ]);
+  //     }
+  //   }
+  // }
+
   function checkGuess() {
     if (gameOver) return;
-    if (selectedSquare && questionWord.Chinese.includes(selectedSquare)) {
+
+    if (selectedSquare === questionWord.Chinese) {
       console.log("correct!");
       getNextWord();
     } else {
-      console.log("selectedSquare", selectedSquare);
-      if (!incorrect.some((word) => word.Chinese === questionWord.Chinese)) {
-        setIncorrect((prev) => {
-          return [...prev, questionWord];
-        });
+      console.log("incorrect!");
+      // isSquareIncorrect(selectedSquare);
+      if (
+        !incorrect.some(
+          (entry) => entry.questWord.Chinese === questionWord.Chinese
+        )
+      ) {
+        setIncorrect((prev) => [
+          ...prev,
+          { questWord: questionWord, guessedWord: selectedSquare },
+        ]);
       }
     }
   }
@@ -103,6 +135,7 @@ export default function Practice() {
               currentWord={questionWord}
               gridChar={gridChar}
               setGridChar={setGridChar}
+              incorrect={incorrect}
             />
           </div>
 
