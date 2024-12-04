@@ -12,7 +12,7 @@ There are separate levels for each of the HSK levels and each vocabulary list co
 
 Once you select a **deck** from the **Home** page, you will be redirected to the **Practice** page with your chosen **deck**. On load, the deck is shuffled and you're given the _English_ word and the _Pinyin_ counterpart for the traditional Chinese characters to fill out in the answer blocks. The characters get filled out once the correct character is clicked on from the grid of shuffled characters.
 
-You will have the option to move on to the next word once the word is completely filled. Once you get to the end of the current deck, you will be given stats on how you did with that round. You can then practice the deck again to better your score or go back **Home** to choose another **deck** to study a new deck. You can also reset the level of difficulty or choose a new vocabulary word list on the homepage at any time.
+You will have the option to move on to the next word once the correct word is slected from the grid. Once you get to the end of the current deck, you will be given shown a scoreboard with how you did in that round, including a list of question words you got incorrect. You can then practice the deck again to better your score or go back **Home** to choose another **deck** to study. You can also reset the level of difficulty or choose a new vocabulary word list on the homepage at any time.
 
 # Running the Project
 

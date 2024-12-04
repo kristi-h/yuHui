@@ -18,7 +18,7 @@ export const GridSquare = ({ char, gameOver, incorrect }) => {
   return (
     <motion.button
       className={`grid-square ${
-        incorrect.guessedWord ? "incorrect-border" : ""
+        incorrect?.guessedWord ? "incorrect-border" : ""
       } `}
       onClick={(e) => handleClick(e)}
       value={char.Chinese || ""}
