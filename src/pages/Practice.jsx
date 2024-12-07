@@ -40,6 +40,8 @@ export default function Practice() {
     };
   }, []);
 
+  console.log("Incorrect state in GameOver:", incorrect);
+
   function getNextWord() {
     const wordsLeft = questionBank.filter(
       (word) => word.Chinese !== questionWord.Chinese

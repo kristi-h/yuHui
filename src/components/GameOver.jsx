@@ -24,6 +24,7 @@ export default function GameOver({
           gridChar={gridChar}
           gameOver={gameOver}
           onGridAnimationComplete={handleGridAnimationComplete}
+          incorrect={incorrect}
         />
       )}
 
