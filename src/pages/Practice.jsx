@@ -54,6 +54,10 @@ export default function Practice() {
     const randWord = wordsLeft[Math.floor(Math.random() * wordsLeft.length)];
     setQuestionWord(randWord);
     resetSelectedSquare();
+    setIncorrect((prev) => ({
+      questWords: [...prev.questWords],
+      guessedWords: [],
+    }));
   }
 
   console.log("incorrect.guessedWords", incorrect.guessedWords);

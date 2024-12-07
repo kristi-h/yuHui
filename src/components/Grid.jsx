@@ -27,11 +27,6 @@ export default function Grid({
 
   const gridVariants = {
     initial: { scale: 1, opacity: 1 },
-    // jiggle: {
-    //   scale: [1, 1.05, 0.95, 1],
-    //   rotate: [0, -5, 5, 0],
-    //   transition: { duration: 0.5 },
-    // },
     hidden: {
       opacity: 0,
       scale: 0.8,
