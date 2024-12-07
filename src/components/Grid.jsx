@@ -12,6 +12,7 @@ export default function Grid({
   setGridChar,
   onGridAnimationComplete,
   incorrect,
+  setIncorrect,
 }) {
   const [prevAnswerIndex, setPrevAnswerIndex] = useState(null);
 
@@ -36,6 +37,21 @@ export default function Grid({
       },
     },
   };
+
+  // function handleClick(char) {
+  //   const isCorrect = char === currentWord.Chinese;
+
+  //   if (!isCorrect) {
+  //     setIncorrect((prev) => ({
+  //       questWords: prev.questWords.includes(currentWord)
+  //         ? prev.questWords
+  //         : [...prev.questWords, currentWord],
+  //       guessedWords: prev.guessedWords.includes(char)
+  //         ? prev.guessedWords
+  //         : [...prev.guessedWords, char],
+  //     }));
+  //   }
+  // }
 
   function getGrid() {
     let tempGrid;
@@ -82,6 +98,7 @@ export default function Grid({
           char={char}
           gameOver={gameOver}
           incorrect={incorrect}
+          // handleClick={handleClick}
         />
       ))}
     </motion.div>

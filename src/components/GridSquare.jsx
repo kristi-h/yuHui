@@ -10,7 +10,7 @@ const squareVariants = {
   },
 };
 
-export const GridSquare = ({ char, gameOver, incorrect }) => {
+export const GridSquare = ({ char, gameOver, incorrect, ...props }) => {
   const { handleClick } = useSelectedSquare();
 
   const incorrectEle = () => {
@@ -24,6 +24,7 @@ export const GridSquare = ({ char, gameOver, incorrect }) => {
 
   return (
     <motion.button
+      {...props}
       className={`grid-square ${incorrectEle()}`}
       onClick={(e) => handleClick(e)}
       value={char.Chinese || ""}

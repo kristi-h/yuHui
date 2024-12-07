@@ -130,6 +130,7 @@ export default function Practice() {
               gridChar={gridChar}
               setGridChar={setGridChar}
               incorrect={incorrect}
+              setIncorrect={setIncorrect}
             />
           </div>
 
