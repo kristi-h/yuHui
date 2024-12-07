@@ -13,13 +13,18 @@ const squareVariants = {
 export const GridSquare = ({ char, gameOver, incorrect }) => {
   const { handleClick } = useSelectedSquare();
 
-  console.log("incorrect", incorrect);
+  const incorrectEle = () => {
+    if (incorrect.guessedWords.includes(char.Chinese)) {
+      return "incorrect-border";
+    }
+    return "";
+  };
+
+  console.log("incorrect.guessedWords", incorrect.guessedWords);
 
   return (
     <motion.button
-      className={`grid-square ${
-        incorrect?.guessedWord ? "incorrect-border" : ""
-      } `}
+      className={`grid-square ${incorrectEle()}`}
       onClick={(e) => handleClick(e)}
       value={char.Chinese || ""}
       variants={squareVariants}

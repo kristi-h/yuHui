@@ -13,7 +13,10 @@ export default function Practice() {
   const { state } = useLocation();
   const { level } = state;
   const [cluster] = useState(state.cluster);
-  const [incorrect, setIncorrect] = useState([]);
+  const [incorrect, setIncorrect] = useState({
+    questWords: [],
+    guessedWords: [],
+  });
   const { selectedSquare, resetSelectedSquare } = useSelectedSquare();
   const [questionWord, setQuestionWord] = useState(cluster[0]);
   const [questionBank, setQuestionBank] = useState(cluster);
@@ -30,7 +33,10 @@ export default function Practice() {
 
   useEffect(() => {
     return () => {
-      setIncorrect([]);
+      setIncorrect({
+        questWords: [],
+        guessedWords: [],
+      });
     };
   }, []);
 
@@ -50,30 +56,7 @@ export default function Practice() {
     resetSelectedSquare();
   }
 
-  // const isSquareIncorrect = (square) => {
-  //   return incorrect.some((entry) => entry.guessedWord === square.Chinese);
-  // };
-
-  // function checkGuess() {
-  //   if (gameOver) return;
-  //   if (selectedSquare && questionWord.Chinese.includes(selectedSquare)) {
-  //     console.log("correct!");
-  //     getNextWord();
-  //   } else {
-  //     console.log("selectedSquare", selectedSquare);
-  //     isSquareIncorrect();
-  //     if (
-  //       !incorrect.some(
-  //         (word) => word.questWord.Chinese === questionWord.Chinese
-  //       )
-  //     ) {
-  //       setIncorrect((prev) => [
-  //         ...prev,
-  //         { questWord: questionWord, guessedWord: selectedSquare },
-  //       ]);
-  //     }
-  //   }
-  // }
+  console.log("incorrect.guessedWords", incorrect.guessedWords);
 
   function checkGuess() {
     if (gameOver) return;
@@ -81,21 +64,28 @@ export default function Practice() {
     if (selectedSquare === questionWord.Chinese) {
       console.log("correct!");
       getNextWord();
-    } else {
-      console.log("incorrect!");
-      // isSquareIncorrect(selectedSquare);
-      if (
-        !incorrect.some(
-          (entry) => entry.questWord.Chinese === questionWord.Chinese
+    } else if (selectedSquare) {
+      console.log("Incorrect!");
+      setIncorrect((prev) => {
+        const updatedQuestWords = prev.questWords.some(
+          (entry) => entry.Chinese === questionWord.Chinese
         )
-      ) {
-        setIncorrect((prev) => [
-          ...prev,
-          { questWord: questionWord, guessedWord: selectedSquare },
-        ]);
-      }
+          ? prev.questWords
+          : [...prev.questWords, questionWord];
+
+        const updatedGuessedWords = prev.guessedWords.includes(selectedSquare)
+          ? prev.guessedWords
+          : [...prev.guessedWords, selectedSquare];
+
+        return {
+          questWords: updatedQuestWords,
+          guessedWords: updatedGuessedWords,
+        };
+      });
     }
   }
+
+  console.log("practice: incorrect.guessedWords", incorrect.guessedWords);
 
   function handleGameOver() {
     setGameOver(!gameOver);
