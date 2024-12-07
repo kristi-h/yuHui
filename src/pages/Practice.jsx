@@ -101,7 +101,7 @@ export default function Practice() {
     setGameOver(false);
     setQuestionBank(cluster);
     setQuestionWord(cluster[0]);
-    setIncorrect([]);
+    setIncorrect({ questWords: [], guessedWords: [] });
   }
 
   function handleSelectNewDeck() {
