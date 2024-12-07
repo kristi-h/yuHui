@@ -1,6 +1,6 @@
 export default function Scoreboard({ cluster, incorrect }) {
   function calculateScore() {
-    let tally = cluster.length - incorrect.length;
+    let tally = cluster.length - incorrect.guessedWords.length;
     if (tally < 0) {
       tally = 0;
     }
@@ -8,6 +8,7 @@ export default function Scoreboard({ cluster, incorrect }) {
   }
 
   function wrongListEle() {
+    console.log("incorrect.questWord", incorrect.questWord);
     const wrongQuest = incorrect.questWord;
     wrongQuest.map((word, index) => (
       <div key={index} className="incorrect-table-item">
@@ -29,7 +30,7 @@ export default function Scoreboard({ cluster, incorrect }) {
       ) : (
         <div>
           <h2>Incorrect words:</h2>
-          <div className="incorrect-table">{wrongListEle}</div>
+          <div className="incorrect-table">{wrongListEle()}</div>
         </div>
       )}
     </div>
