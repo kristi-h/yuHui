@@ -31,7 +31,7 @@ export default function GameOver({
       )}
 
       {!showGrid && (
-        <>
+        <div className="game-over-contents">
           <motion.div
             className="game-over-gif"
             initial={{ opacity: 0 }}
@@ -55,7 +55,7 @@ export default function GameOver({
               </button>
             </div>
           </motion.div>
-        </>
+        </div>
       )}
     </div>
   );
