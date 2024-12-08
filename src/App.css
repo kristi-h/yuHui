@@ -317,6 +317,7 @@
   .btns-container {
     gap: 1em;
     margin-top: 0.7em;
+    align-items: center;
   }
 
   .btn {
@@ -330,39 +331,47 @@
 /*------------Game End----------------------------------------------*/
 .game-over-container {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   padding: 1em;
   overflow: hidden;
-  position: relative;
 }
 
 .game-over-contents {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  text-align: center;
   justify-content: flex-end;
-  height: 100%;
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  position: relative;
+  padding-bottom: 1em;
+  box-sizing: border-box;
 }
 
 .congrats-title {
+  padding-top: 1em;
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin-bottom: 1rem;
+  text-align: center;
 }
 
 .gif {
   width: 100%;
-  max-width: 400px;
-  /* max-height: 10%;
-  background-size: cover; */
+  max-width: 100%;
   margin-bottom: 1rem;
+  box-sizing: border-box;
 }
 
 .scoreboard {
-  font-size: 1rem;
-  max-width: 90%;
-  margin-bottom: 20px;
-  max-height: 80vh;
-  overflow-y: hidden;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  /* max-height: 80vh; */
   overflow-y: auto;
+  position: relative;
+  text-align: center;
 }
 
 .incorrect-table {
@@ -375,9 +384,16 @@
   max-height: 30vh;
   overflow-y: auto;
   width: 100%;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  /* max-width: 400px; */
+  position: relative;
+  margin-top: auto;
+  box-sizing: border-box;
+}
+
+.incorrect-table,
+.gif {
+  max-width: 100%;
+  width: 100%;
 }
 
 .incorrect-table-item {
@@ -387,34 +403,47 @@
   color: #333;
   border-radius: 0.5rem;
   text-align: center;
-  border-bottom: 1px solid #eee;
-  text-align: center;
   font-size: 1rem;
 }
 
 @media (min-width: 300px) {
   .incorrect-table {
-    max-height: 30vh;
-    font-size: 0.3rem;
+    font-size: 0.8rem;
+    max-height: 40vh;
+  }
+  .gif {
+    max-width: 300px;
   }
 }
 
 @media (min-width: 768px) {
   .incorrect-table {
-    max-height: 60vh;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    max-height: 50vh;
+  }
+  .gif {
+    max-width: 500px;
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 1024px) {
   .incorrect-table {
-    max-height: 280vh;
-    font-size: 3rem;
-    padding: 3rem;
+    font-size: 1.2rem;
+    max-height: 60vh;
+    padding: 1rem;
   }
   .gif {
     max-width: 600px;
-    max-height: 50vh;
+  }
+}
+
+@media (min-width: 1220px) {
+  .incorrect-table {
+    font-size: 1.4rem;
+    max-height: 70vh;
+  }
+  .gif {
+    max-width: 700px;
   }
 }
 
