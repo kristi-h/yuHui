@@ -1,16 +1,19 @@
 export default function Scoreboard({ cluster, incorrect }) {
   function calculateScore() {
-    let tally = cluster.length - incorrect.guessedWords.length;
+    console.log("incorrect.questWords.length", incorrect.questWords.length);
+    let tally = cluster.length - incorrect.questWords.length;
     if (tally < 0) {
       tally = 0;
     }
     return tally;
   }
+  // console.log("scoreboard: incorrect.questWords", incorrect.questWords);
 
   function wrongListEle() {
-    console.log("incorrect.questWord", incorrect.questWord);
-    const wrongQuest = incorrect.questWord;
-    wrongQuest.map((word, index) => (
+    console.log("inside wrongListEle?");
+    console.log("scoreboard: incorrect.questWord", incorrect.questWord);
+    const wrongQuest = incorrect.questWords;
+    return wrongQuest.map((word, index) => (
       <div key={index} className="incorrect-table-item">
         <p>
           {word.Chinese} - {word.Pinyin} - {word.English}
@@ -25,7 +28,7 @@ export default function Scoreboard({ cluster, incorrect }) {
       <h2>
         Score: {calculateScore()}/{cluster.length}{" "}
       </h2>
-      {!incorrect.questWord || incorrect.length === 0 ? (
+      {incorrect.questWords.length === 0 ? (
         <h2>You had no mistakes, way to go!!!</h2>
       ) : (
         <div>

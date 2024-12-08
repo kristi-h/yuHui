@@ -40,8 +40,6 @@ export default function Practice() {
     };
   }, []);
 
-  console.log("Incorrect state in GameOver:", incorrect);
-
   function getNextWord() {
     const wordsLeft = questionBank.filter(
       (word) => word.Chinese !== questionWord.Chinese
@@ -62,7 +60,7 @@ export default function Practice() {
     }));
   }
 
-  console.log("incorrect.guessedWords", incorrect.guessedWords);
+  // console.log("incorrect.guessedWords", incorrect.guessedWords);
 
   function checkGuess() {
     if (gameOver) return;
@@ -90,8 +88,6 @@ export default function Practice() {
       });
     }
   }
-
-  console.log("practice: incorrect.guessedWords", incorrect.guessedWords);
 
   function handleGameOver() {
     setGameOver(!gameOver);

@@ -17,6 +17,8 @@ export default function GameOver({
     setShowGrid(false);
   };
 
+  // console.log("gameover: incorrect", incorrect);
+
   return (
     <div className="game-over-container">
       {showGrid && (

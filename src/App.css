@@ -14,7 +14,7 @@
 }
 
 .app-container {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   width: 100vw;
@@ -324,24 +324,35 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: auto;
   text-align: center;
+  padding: 1em;
+  text-align: center;
+  overflow-y: auto;
 }
 
 .congrats-title {
-  font-size: 4rem;
+  font-size: 2.5rem;
   margin-bottom: 20px;
+  /* line-height: 1.2; */
 }
 
 .gif {
-  margin: auto;
+  /* margin: auto; */
+  width: 100%;
+  max-width: 400px;
+  max-height: 10%;
+  background-size: cover;
+  margin-bottom: 1rem;
 }
 
 .scoreboard {
   font-size: 1rem;
+  max-width: 90%;
   margin-bottom: 20px;
   max-height: 80vh;
   overflow-y: hidden;
+  overflow-y: auto;
 }
 
 .incorrect-table {
@@ -384,7 +395,12 @@
     font-size: 3rem;
     padding: 3rem;
   }
+  .gif {
+    max-width: 600px;
+    max-height: 50vh;
+  }
 }
+
 .grid-container.difficult {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
