@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { hsk3 } from "../hsk3.jsx";
+import Lanterns from "../components/lanterns/Lanterns";
 
 export function shuffle(array) {
   let currentIndex = array.length;
@@ -54,6 +55,7 @@ export default function Home() {
 
   return (
     <div className="home-center-container">
+      <Lanterns />
       <div className="content-box">
         <h1 className="home-title">Intensity: </h1>
         <div className="centered-carousel">
