@@ -17,12 +17,35 @@ body {
 
 .lantern {
   position: absolute;
-  width: 30px;
-  height: 40px;
-  background: rgba(255, 200, 50, 0.9);
-  border-radius: 50%;
-  box-shadow: 0 0 20px 10px rgba(255, 200, 50, 0.5);
+  width: 40px;
+  height: 60px;
+  background: #ff3737;
+  border-radius: 15px;
+  box-shadow: 0 0 20px 10px rgba(255, 150, 50, 0.5);
   animation: floatLantern 10s ease-in infinite;
+}
+
+.lantern-top {
+  position: relative;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 15px;
+  background: #ffd700;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.lantern-tassel {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5px;
+  height: 30px;
+  background: #ffd700;
+  animation: swingTassel 3s ease-in-out infinite;
 }
 
 @keyframes floatLantern {
@@ -36,5 +59,17 @@ body {
   100% {
     transform: translateY(-120vh) translateX(calc(-50vw + 10vw)) rotate(15deg);
     opacity: 0;
+  }
+}
+
+@keyframes swingTassel {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0deg);
   }
 }
