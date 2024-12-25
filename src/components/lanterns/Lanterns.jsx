@@ -1,38 +1,31 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import "./lanterns.css";
 
 const Lanterns = () => {
+  const [lanterns, setLanterns] = useState([]);
   const containerRef = useRef(null);
 
-  const createLantern = (x = null, y = null) => {
+  const createLantern = useCallback((x = null, y = null) => {
     const container = containerRef.current;
     if (!container) return;
 
-    const lantern = document.createElement("div");
-    lantern.classList.add("lantern");
+    const randomX = x !== null ? x : Math.random() * container.offsetWidth;
+    const randomY = y !== null ? y : 0;
 
-    const randomX =
-      x !== null ? `${x}px` : `${Math.random() * container.offsetWidth}px`;
-    const randomY = y !== null ? `${y}px` : `-10%`;
-    const randomDelay = Math.random() * 2;
-    const randomDuration = 8 + Math.random() * 4;
-
-    lantern.style.left = randomX;
-    lantern.style.bottom = randomY;
-    lantern.style.animationDelay = `${randomDelay}s`;
-    lantern.style.animationDuration = `${randomDuration}s`;
-
-    container.appendChild(lantern);
-
-    setTimeout(() => {
-      lantern.remove();
-    }, (randomDelay + randomDuration) * 1000);
-  };
+    setLanterns((prev) => {
+      const newLanterns = [...prev, { x: randomX, y: randomY }];
+      console.log("Lanterns state updated:", newLanterns);
+      return newLanterns.slice(-50);
+    });
+  }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => createLantern(), 1000);
+    const interval = setInterval(() => {
+      createLantern();
+    }, 1000);
+
     return () => clearInterval(interval);
-  }, []);
+  }, [createLantern]);
 
   const handleClick = (e) => {
     const container = containerRef.current;
@@ -42,16 +35,28 @@ const Lanterns = () => {
       const x = e.clientX - rect.left;
       const y = rect.bottom - e.clientY;
 
+      console.log(`Click registered at: x=${x}, y=${y}`);
       createLantern(x, y);
     }
   };
 
   return (
-    <div
-      ref={containerRef}
-      className="lantern-container"
-      onClick={handleClick}
-    ></div>
+    <div ref={containerRef} className="lantern-container" onClick={handleClick}>
+      {lanterns.map((lantern, index) => (
+        <div
+          key={index}
+          className="lantern"
+          style={{
+            left: `${lantern.x}px`,
+            bottom: `${lantern.y}px`,
+          }}
+        >
+          <div className="lantern-top"></div>
+          <div className="lantern-body"></div>
+          <div className="lantern-tassel"></div>
+        </div>
+      ))}
+    </div>
   );
 };
 
