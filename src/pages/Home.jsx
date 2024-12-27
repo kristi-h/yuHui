@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { hsk3 } from "../hsk3.jsx";
 import Lanterns from "../components/lanterns/Lanterns";
+import PreventClickBubbling from "../components/lanterns/PreventClickBubbling";
 
 export function shuffle(array) {
   let currentIndex = array.length;
@@ -53,9 +54,24 @@ export default function Home() {
     });
   }
 
+  const LanternWrapper = () => {
+    const handleLanternClick = (e) => {
+      console.log("Lantern clicked:", e);
+    };
+
+    return (
+      <PreventClickBubbling
+        onClick={handleLanternClick}
+        ignoredSelector=".content-box"
+      >
+        <Lanterns />
+      </PreventClickBubbling>
+    );
+  };
+
   return (
     <div className="home-center-container">
-      <Lanterns />
+      <LanternWrapper />
       <div className="content-box">
         <h1 className="home-title">Intensity: </h1>
         <div className="centered-carousel">
