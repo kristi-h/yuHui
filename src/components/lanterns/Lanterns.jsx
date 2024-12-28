@@ -4,6 +4,7 @@ import "./lanterns.css";
 const Lanterns = () => {
   const [lanterns, setLanterns] = useState([]);
   const containerRef = useRef(null);
+  const MAX_LANTERNS = 12;
 
   const createLantern = useCallback((x = null, y = null) => {
     const container = containerRef.current;
@@ -15,6 +16,9 @@ const Lanterns = () => {
     const randomDelay = Math.random() * 5;
 
     setLanterns((prev) => {
+      if (prev.length >= MAX_LANTERNS) {
+        return prev;
+      }
       const newLanterns = [
         ...prev,
         {
