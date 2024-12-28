@@ -14,18 +14,18 @@ const Lanterns = () => {
     const randomDuration = Math.random() * 5 + 10;
     const randomDelay = Math.random() * 5;
 
-    setLanterns((prev) => {
-      const newLanterns = [
-        ...prev,
-        {
-          x: randomX,
-          y: randomY,
-          duration: randomDuration,
-          delay: randomDelay,
-        },
-      ];
-      return newLanterns.slice(-50);
-    });
+    const newLantern = {
+      x: randomX,
+      y: randomY,
+      duration: randomDuration,
+      delay: randomDelay,
+    };
+
+    setLanterns((prev) => [...prev, newLantern]);
+
+    setTimeout(() => {
+      setLanterns((prev) => prev.filter((lantern) => lantern !== newLantern));
+    }, (randomDuration + randomDelay) * 1500);
   }, []);
 
   useEffect(() => {
@@ -62,7 +62,9 @@ const Lanterns = () => {
             animationDelay: `${lantern.delay}s`,
           }}
         >
-          <div className="lantern-top"></div>
+          <div className="lantern-top">
+            <span className="lantern-details">III</span>
+          </div>
           <div className="lantern-body">
             <span className="lantern-character">福</span>
           </div>
