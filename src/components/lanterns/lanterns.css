@@ -23,7 +23,45 @@ body {
   background: #ff3737;
   border-radius: 15px;
   box-shadow: 0 0 20px 10px rgba(255, 150, 50, 0.5);
-  animation: floatLantern 10s ease-in infinite;
+  animation-name: floatLantern;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  font-family: "Arial", sans-serif;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 60px; /* Centers the "福" character */
+}
+
+@keyframes floatLantern {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: translateY(-150px) translateX(-20px) scale(1.05);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-300px) translateX(40px) scale(1.1);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-450px) translateX(-10px) scale(1.05);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(-600px) translateX(30px) scale(1);
+    opacity: 0;
+  }
+}
+
+.lantern-character {
+  font-size: 24px;
+  color: black;
+  font-weight: bold;
+  font-family: "Arial", sans-serif;
 }
 
 .lantern-top {
@@ -47,20 +85,6 @@ body {
   height: 30px;
   background: #ffd700;
   animation: swingTassel 3s ease-in-out infinite;
-}
-
-@keyframes floatLantern {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-120vh) translateX(calc(-50vw + 10vw)) rotate(15deg);
-    opacity: 0;
-  }
 }
 
 @keyframes swingTassel {

@@ -11,10 +11,19 @@ const Lanterns = () => {
 
     const randomX = x !== null ? x : Math.random() * container.offsetWidth;
     const randomY = y !== null ? y : 0;
+    const randomDuration = Math.random() * 5 + 10;
+    const randomDelay = Math.random() * 5;
 
     setLanterns((prev) => {
-      const newLanterns = [...prev, { x: randomX, y: randomY }];
-      console.log("Lanterns state updated:", newLanterns);
+      const newLanterns = [
+        ...prev,
+        {
+          x: randomX,
+          y: randomY,
+          duration: randomDuration,
+          delay: randomDelay,
+        },
+      ];
       return newLanterns.slice(-50);
     });
   }, []);
@@ -49,10 +58,14 @@ const Lanterns = () => {
           style={{
             left: `${lantern.x}px`,
             bottom: `${lantern.y}px`,
+            animationDuration: `${lantern.duration}s`,
+            animationDelay: `${lantern.delay}s`,
           }}
         >
           <div className="lantern-top"></div>
-          <div className="lantern-body"></div>
+          <div className="lantern-body">
+            <span className="lantern-character">福</span>
+          </div>
           <div className="lantern-tassel"></div>
         </div>
       ))}
