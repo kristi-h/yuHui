@@ -5,6 +5,7 @@ const Lanterns = () => {
   const [lanterns, setLanterns] = useState([]);
   const containerRef = useRef(null);
   const MAX_LANTERNS = 12;
+  const MIN_DISTANCE = 90;
 
   const createLantern = useCallback((x = null, y = null) => {
     const container = containerRef.current;
@@ -19,7 +20,19 @@ const Lanterns = () => {
       if (prev.length >= MAX_LANTERNS) {
         return prev;
       }
-      const newLanterns = [
+
+      const isTooClose = prev.some((lantern) => {
+        const dx = lantern.x - randomX;
+        const dy = lantern.y - randomY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        return distance < MIN_DISTANCE;
+      });
+
+      if (isTooClose) {
+        return prev;
+      }
+
+      return [
         ...prev,
         {
           x: randomX,
@@ -28,7 +41,6 @@ const Lanterns = () => {
           delay: randomDelay,
         },
       ];
-      return newLanterns.slice(-50);
     });
   }, []);
 
