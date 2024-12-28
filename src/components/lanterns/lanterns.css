@@ -64,12 +64,6 @@ body {
   font-family: "Arial", sans-serif;
 }
 
-.lantern-details {
-  color: black;
-  font-weight: bold;
-  font-family: "Arial", sans-serif;
-}
-
 .lantern-top {
   position: relative;
   top: -15px;
