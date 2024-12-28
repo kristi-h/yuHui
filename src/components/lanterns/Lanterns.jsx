@@ -13,7 +13,7 @@ const Lanterns = () => {
 
     const randomX = x !== null ? x : Math.random() * container.offsetWidth;
     const randomY = y !== null ? y : 0;
-    const randomDuration = Math.random() * 5 + 10;
+    const randomDuration = Math.random() * 8 + 12;
     const randomDelay = Math.random() * 5;
 
     setLanterns((prev) => {
