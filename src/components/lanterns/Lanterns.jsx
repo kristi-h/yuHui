@@ -79,14 +79,59 @@ const Lanterns = () => {
           }}
         >
           <div className="lantern-top">
-            <span className="lantern-details">III</span>
+            <span className="lantern-details"></span>
           </div>
           <div className="lantern-body">
             <span className="lantern-character">福</span>
           </div>
-          <div className="lantern-tassel left-tassel"></div>
-          <div className="lantern-tassel middle-tassel"></div>
-          <div className="lantern-tassel right-tassel"></div>
+          <div className="lantern-bottom">
+            <span className="lantern-details"></span>
+          </div>
+          <div className="lantern-tassel left-tassel">
+            <svg
+              className="curly-tassel-svg"
+              viewBox="0 0 100 200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M50 0 C35 30, 65 60, 50 90 C40 120, 70 160, 50 200"
+                stroke="#ffd700"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="lantern-tassel middle-tassel">
+            <svg
+              className="curly-tassel-svg"
+              viewBox="0 0 100 200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M48 0 C30 50, 60 80, 50 110 C40 140, 55 170, 45 210"
+                stroke="#ffd700"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+          <div className="lantern-tassel right-tassel">
+            <svg
+              className="curly-tassel-svg"
+              viewBox="0 0 100 200"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M55 0 C50 40, 65 70, 45 100 C35 130, 60 170, 55 195"
+                stroke="#ffd700"
+                strokeWidth="3"
+                fill="none"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
         </div>
       ))}
     </div>
