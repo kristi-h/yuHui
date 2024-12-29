@@ -57,7 +57,7 @@ body {
   }
 }
 
-.lantern-character {
+.lantern-character .lantern-details {
   font-size: 24px;
   color: black;
   font-weight: bold;
@@ -78,13 +78,31 @@ body {
 
 .lantern-tassel {
   position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 5px;
+  bottom: -32px;
+  width: 3px;
   height: 30px;
   background: #ffd700;
-  animation: swingTassel 3s ease-in-out infinite;
+  animation: swingTassel 3s ease-in-out infinite,
+    driftTassel 5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+.left-tassel {
+  left: 40%;
+  transform: translateX(-40%);
+  animation-delay: 0.2s;
+}
+
+.middle-tassel {
+  left: 50%;
+  transform: translateX(-50%);
+  animation-delay: 0.4s;
+}
+
+.right-tassel {
+  left: 60%;
+  transform: translateX(-60%);
+  animation-delay: 0.6s;
 }
 
 @keyframes swingTassel {
@@ -96,5 +114,23 @@ body {
   }
   100% {
     transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+@keyframes driftTassel {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-2px) rotate(3deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(4deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
   }
 }

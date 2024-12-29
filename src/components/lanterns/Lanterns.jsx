@@ -78,11 +78,15 @@ const Lanterns = () => {
             animationDelay: `${lantern.delay}s`,
           }}
         >
-          <div className="lantern-top"></div>
+          <div className="lantern-top">
+            <span className="lantern-details">III</span>
+          </div>
           <div className="lantern-body">
             <span className="lantern-character">福</span>
           </div>
-          <div className="lantern-tassel"></div>
+          <div className="lantern-tassel left-tassel"></div>
+          <div className="lantern-tassel middle-tassel"></div>
+          <div className="lantern-tassel right-tassel"></div>
         </div>
       ))}
     </div>
