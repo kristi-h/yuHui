@@ -64,7 +64,7 @@ export default function Home() {
         onClick={handleLanternClick}
         ignoredSelector=".content-box"
       >
-        {/* <Lanterns /> */}
+        <Lanterns />
       </PreventClickBubbling>
     );
   };
