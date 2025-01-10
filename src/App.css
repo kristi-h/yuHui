@@ -15,7 +15,6 @@ body {
   z-index: 10;
   padding: 1rem 2rem;
   color: inherit;
-
   position: fixed;
   width: 100%;
   box-sizing: border-box;
@@ -28,6 +27,10 @@ body {
   font-family: "Noto Serif SC", serif;
   text-align: center;
   margin: 0;
+}
+
+.header-title :hover {
+  color: rgb(90, 17, 17);
 }
 
 .app-container {
@@ -95,7 +98,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("/assets/chinese-schoolhouse.png");
+  background-image: url("/assets/chinese-schoolhouse-nightsky.png");
   background-size: cover;
   background-position: center;
 }
@@ -303,10 +306,6 @@ body {
   .english-word,
   .pinyin-word {
     font-size: 1em;
-  }
-
-  .header-title {
-    font-size: 1.1rem;
   }
 
   .grid-container {
