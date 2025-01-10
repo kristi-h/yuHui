@@ -296,6 +296,7 @@ body {
 
 @media (min-width: 320px) {
   .question-container {
+    margin-top: 5rem;
     height: 3rem;
   }
 
@@ -324,13 +325,18 @@ body {
   .btn {
     padding: 0.2px;
     width: 7em;
-    height: 2.4em;
+    height: 2.9em;
     font-size: 0.8em;
     border-radius: 80%;
   }
 }
 
 @media (min-width: 601px) {
+  .question-container {
+    margin-top: 5rem;
+    height: 3rem;
+  }
+
   .header-title {
     font-size: 1.3rem;
   }
@@ -354,7 +360,8 @@ body {
   }
 
   .question-container {
-    margin-top: 3em;
+    margin-top: 6.5rem;
+    height: 3rem;
   }
 
   .grid-container {
@@ -388,6 +395,11 @@ body {
 }
 
 @media (min-width: 1225px) {
+  .question-container {
+    margin-top: 6.5em;
+    height: 3rem;
+  }
+
   .header-title {
     font-size: 2em;
   }
