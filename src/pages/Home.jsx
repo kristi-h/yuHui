@@ -4,6 +4,7 @@ import "../App.css";
 import { hsk3 } from "../hsk3.jsx";
 import Lanterns from "../components/lanterns/Lanterns";
 import PreventClickBubbling from "../components/lanterns/PreventClickBubbling";
+import Fireflies from "../components/fireflies/Fireflies";
 
 export function shuffle(array) {
   let currentIndex = array.length;
@@ -64,7 +65,8 @@ export default function Home() {
         onClick={handleLanternClick}
         ignoredSelector=".content-box"
       >
-        <Lanterns />
+        {/* <Lanterns /> */}
+        <Fireflies />
       </PreventClickBubbling>
     );
   };
