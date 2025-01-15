@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./firefly.css";
 
 const Firefly = ({ index }) => {
@@ -10,9 +10,9 @@ const Firefly = ({ index }) => {
       left: `${Math.random() * 100}vw`,
     };
 
-    const randomSize = `${Math.random() * 5 + 5}px`;
-    const randomFloatDuration = `${4 + Math.random() * 2}s`; // 4-6s
-    const randomGlowDuration = `${1.5 + Math.random() * 1.5}s`; // 1.5-3s
+    const randomSize = `${Math.random() * 5 + 5}px`; // 5-10px
+    const randomFloatDuration = `${24 + Math.random() * 2}s`; // 24-16s
+    const randomGlowDuration = `${2.5 + Math.random() * 1.5}s`; // 2.5-3s
     const randomGlowDelay = `${Math.random() * 2}s`; // 0-2s
 
     setStyles({
@@ -28,4 +28,6 @@ const Firefly = ({ index }) => {
   return <div className="firefly" style={styles}></div>;
 };
 
-export default Firefly;
+const MemoizedFirefly = React.memo(Firefly);
+
+export default MemoizedFirefly;
