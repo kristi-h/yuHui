@@ -7,7 +7,6 @@ export default function Scoreboard({ cluster, incorrect }) {
     }
     return tally;
   }
-  // console.log("scoreboard: incorrect.questWords", incorrect.questWords);
 
   function wrongListEle() {
     console.log("inside wrongListEle?");

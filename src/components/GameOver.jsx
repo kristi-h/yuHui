@@ -17,8 +17,6 @@ export default function GameOver({
     setShowGrid(false);
   };
 
-  // console.log("gameover: incorrect", incorrect);
-
   return (
     <div className="game-over-container">
       {showGrid && (
@@ -37,9 +35,12 @@ export default function GameOver({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             style={{
-              backgroundImage: `url("/assets/congrats.gif")`,
+              // backgroundImage: `url("/assets/congrats.gif")`,
+              backgroundImage: `url("/assets/gif/disciple-sunglasses.png")`,
               backgroundSize: "cover",
               height: "100vh",
+              width: "100vw",
+              marginTop: "-15px",
             }}
           >
             <h1 className="congrats-title">
