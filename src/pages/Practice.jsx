@@ -44,22 +44,18 @@ export default function Practice() {
     setIncorrect((prev) => ({
       questWords: [...prev.questWords, questionWord],
     }));
+    console.log("incorrect[0]", incorrect);
     getNextWord();
   }
 
   function getNextWord() {
-    const wordsLeft = questionBank.filter(
-      (word) => word.Chinese !== questionWord.Chinese
-    );
-
-    if (wordsLeft.length < 1) {
+    const currentIndex = questionBank.indexOf(questionWord);
+    if (currentIndex === -1 || currentIndex === questionBank.length - 1) {
       setGameOver(true);
       return;
     }
 
-    setQuestionBank(wordsLeft);
-    const randWord = wordsLeft[Math.floor(Math.random() * wordsLeft.length)];
-    setQuestionWord(randWord);
+    setQuestionWord(questionBank[currentIndex + 1]);
     resetSelectedSquare();
     setIncorrect((prev) => ({
       questWords: [...prev.questWords],
