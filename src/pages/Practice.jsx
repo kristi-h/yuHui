@@ -40,6 +40,13 @@ export default function Practice() {
     };
   }, []);
 
+  function skipWord() {
+    setIncorrect((prev) => ({
+      questWords: [...prev.questWords, questionWord],
+    }));
+    getNextWord();
+  }
+
   function getNextWord() {
     const wordsLeft = questionBank.filter(
       (word) => word.Chinese !== questionWord.Chinese
@@ -59,8 +66,6 @@ export default function Practice() {
       guessedWords: [],
     }));
   }
-
-  // console.log("incorrect.guessedWords", incorrect.guessedWords);
 
   function checkGuess() {
     if (gameOver) return;
@@ -133,7 +138,8 @@ export default function Practice() {
           </div>
 
           <WordController
-            getNextWord={getNextWord}
+            // getNextWord={getNextWord}
+            skipWord={skipWord}
             handleGameOver={handleGameOver}
           />
         </>
