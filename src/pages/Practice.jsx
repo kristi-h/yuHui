@@ -40,16 +40,30 @@ export default function Practice() {
     };
   }, []);
 
+  function getPrevious() {
+    const currentIndex = questionBank.findIndex(
+      (word) => word.Chinese === questionWord.Chinese
+    );
+    if (currentIndex > 0) {
+      setQuestionWord(questionBank[currentIndex - 1]);
+    }
+  }
+
   function skipWord() {
     setIncorrect((prev) => ({
+      ...prev,
       questWords: [...prev.questWords, questionWord],
     }));
-    console.log("incorrect[0]", incorrect);
+
     getNextWord();
+
+    console.log("updated incorrect", incorrect);
   }
 
   function getNextWord() {
-    const currentIndex = questionBank.indexOf(questionWord);
+    const currentIndex = questionBank.findIndex(
+      (word) => word.Chinese === questionWord.Chinese
+    );
     if (currentIndex === -1 || currentIndex === questionBank.length - 1) {
       setGameOver(true);
       return;
@@ -58,7 +72,7 @@ export default function Practice() {
     setQuestionWord(questionBank[currentIndex + 1]);
     resetSelectedSquare();
     setIncorrect((prev) => ({
-      questWords: [...prev.questWords],
+      ...prev,
       guessedWords: [],
     }));
   }
@@ -67,7 +81,7 @@ export default function Practice() {
     if (gameOver) return;
 
     if (selectedSquare === questionWord.Chinese) {
-      console.log("correct!");
+      console.log("Correct!");
       getNextWord();
     } else if (selectedSquare) {
       console.log("Incorrect!");
@@ -83,6 +97,7 @@ export default function Practice() {
           : [...prev.guessedWords, selectedSquare];
 
         return {
+          ...prev,
           questWords: updatedQuestWords,
           guessedWords: updatedGuessedWords,
         };
@@ -136,6 +151,7 @@ export default function Practice() {
           <WordController
             // getNextWord={getNextWord}
             skipWord={skipWord}
+            getPrevious={getPrevious}
             handleGameOver={handleGameOver}
           />
         </>
