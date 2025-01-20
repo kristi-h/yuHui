@@ -24,8 +24,11 @@ export default function Practice() {
   const [gridChar, setGridChar] = useState([]);
 
   useEffect(() => {
-    shuffle(cluster);
-  }, [cluster, questionWord]);
+    const shuffledCluster = [...cluster];
+    shuffle(shuffledCluster);
+    setQuestionBank(shuffledCluster);
+    setQuestionWord(shuffledCluster[0]);
+  }, []);
 
   useEffect(() => {
     checkGuess();
