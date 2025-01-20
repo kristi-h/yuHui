@@ -24,11 +24,13 @@ export default function Practice() {
   const [gridChar, setGridChar] = useState([]);
 
   useEffect(() => {
-    const shuffledCluster = [...cluster];
-    shuffle(shuffledCluster);
-    setQuestionBank(shuffledCluster);
-    setQuestionWord(shuffledCluster[0]);
-  }, []);
+    if (!gameOver) {
+      const shuffledCluster = [...cluster];
+      shuffle(shuffledCluster);
+      setQuestionBank(shuffledCluster);
+      setQuestionWord(shuffledCluster[0]);
+    }
+  }, [gameOver]);
 
   useEffect(() => {
     checkGuess();
@@ -89,7 +91,7 @@ export default function Practice() {
     } else if (selectedSquare) {
       console.log("Incorrect!");
       setIncorrect((prev) => {
-        const updatedQuestWords = prev.questWords.some(
+        const updatedQuestWords = prev.questWords.find(
           (entry) => entry.Chinese === questionWord.Chinese
         )
           ? prev.questWords
@@ -114,8 +116,6 @@ export default function Practice() {
 
   function handleRepeatDeck() {
     setGameOver(false);
-    setQuestionBank(cluster);
-    setQuestionWord(cluster[0]);
     setIncorrect({ questWords: [], guessedWords: [] });
   }
 
@@ -152,7 +152,6 @@ export default function Practice() {
           </div>
 
           <WordController
-            // getNextWord={getNextWord}
             skipWord={skipWord}
             getPrevious={getPrevious}
             handleGameOver={handleGameOver}

@@ -23,10 +23,10 @@ export default function Scoreboard({ cluster, incorrect }) {
 
   return (
     <div className="scoreboard">
-      <h1>Scoreboard</h1>
-      <h2>
+      <h1>
+        {" "}
         Score: {calculateScore()}/{cluster.length}{" "}
-      </h2>
+      </h1>
       {incorrect.questWords.length === 0 ? (
         <h2>You had no mistakes, way to go!!!</h2>
       ) : (

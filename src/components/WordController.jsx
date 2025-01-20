@@ -1,7 +1,11 @@
-export default function WordController({ skipWord, handleGameOver }) {
+export default function WordController({
+  skipWord,
+  getPrevious,
+  handleGameOver,
+}) {
   return (
     <div className="btns-container">
-      <button className="btn" onClick={skipWord}>
+      <button className="btn" onClick={getPrevious}>
         Previous
       </button>
       <button className="btn" onClick={skipWord}>

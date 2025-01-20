@@ -43,9 +43,7 @@ export default function GameOver({
               marginTop: "-15px",
             }}
           >
-            <h1 className="congrats-title">
-              真棒! You successfully completed your deck!
-            </h1>
+            <h1 className="congrats-title">真棒!</h1>
             <Scoreboard cluster={cluster} incorrect={incorrect} />
             <div className="btns-container mt-8">
               <button className="btn" onClick={handleRepeatDeck}>
