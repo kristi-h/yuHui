@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { DarkModeContext } from "../contexts/DarkModeContext";
 import { useNavigate } from "react-router-dom";
 import "../App.css";
 import { hsk3 } from "../hsk3.jsx";
@@ -23,6 +24,7 @@ export default function Home() {
   const [clusters, setClusters] = useState([]);
   const [level, setLevel] = useState("easy");
   const [currentDeck, setCurrentDeck] = useState(0);
+  const { isDarkMode, toggleDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     function createClusters() {
@@ -70,7 +72,7 @@ export default function Home() {
   };
 
   return (
-    <div className="home-center-container">
+    <div className={`home-center-container ${isDarkMode ? "dark" : ""}`}>
       <LanternWrapper />
       <div className="content-box">
         <h1 className="home-title">Intensity: </h1>

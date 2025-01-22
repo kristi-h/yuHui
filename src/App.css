@@ -55,6 +55,11 @@ body {
   margin-bottom: 20px;
 }
 
+button {
+  z-index: 11;
+  position: relative;
+}
+
 /* Button Styles */
 .level-btn {
   background-color: #a94444;
@@ -98,7 +103,6 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-image: url("/assets/chinese-schoolhouse-nightsky.png");
   background-size: cover;
   background-position: center;
 }
