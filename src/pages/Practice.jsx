@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Grid from "../components/Grid";
 import GameOver from "../components/GameOver";
@@ -7,6 +7,7 @@ import WordController from "../components/WordController";
 import { useSelectedSquare } from "../contexts/SelectedSquareContext";
 import { useLocation } from "react-router-dom";
 import { shuffle } from "./Home";
+import { DarkModeContext } from "../contexts/DarkModeContext";
 
 export default function Practice() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function Practice() {
   const [questionBank, setQuestionBank] = useState(cluster);
   const [gameOver, setGameOver] = useState(false);
   const [gridChar, setGridChar] = useState([]);
+  const { isDarkMode } = useContext(DarkModeContext);
 
   useEffect(() => {
     if (!gameOver) {
@@ -125,7 +127,14 @@ export default function Practice() {
   }
 
   return (
-    <div className="practice-container">
+    <div
+      className="practice-container"
+      style={{
+        backgroundImage: isDarkMode
+          ? 'url("/assets/chinese-class.png")'
+          : 'url("/assets/chinese-classroom-evening2.png")',
+      }}
+    >
       {gameOver ? (
         <GameOver
           cluster={cluster}

@@ -1,23 +1,15 @@
-/* * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body {
-  height: 100%;
-} */
-
 .header {
   background-color: rgba(255, 255, 255, 0.2);
-  /* position: relative; */
   z-index: 10;
   padding: 1rem 2rem;
   color: inherit;
   position: fixed;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
 }
 
 .header-title {
@@ -27,6 +19,7 @@ body {
   font-family: "Noto Serif SC", serif;
   text-align: center;
   margin: 0;
+  text-decoration: "none";
 }
 
 .header-title :hover {
@@ -47,7 +40,6 @@ body {
 
 /*----------------Home-----------------------------------------------*/
 
-/* Typography */
 .home-title {
   font-size: 2rem;
   font-family: "Noto Serif SC", serif;
@@ -55,12 +47,18 @@ body {
   margin-bottom: 20px;
 }
 
-button {
-  z-index: 11;
-  position: relative;
+.dark-mode-toggle {
+  padding: 10px;
+  background-color: #a94444;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  font-size: 1em;
+  border: none;
+  margin: 0;
+  margin-left: auto;
 }
 
-/* Button Styles */
 .level-btn {
   background-color: #a94444;
   color: #fff;
@@ -178,7 +176,6 @@ button {
 .practice-container {
   width: 100vw;
   height: 100vh;
-  background-image: url("/assets/chinese-class.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
