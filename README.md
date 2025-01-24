@@ -1,5 +1,12 @@
 # YuHui: A game for practicing Chinese character recognition
 
+![Uploading Screenshot 2025-01-23 at 10.52.49 PM.png…]()
+![Uploading Screenshot 2025-01-23 at 10.53.01 PM.png…]()
+![Uploading Screenshot 2025-01-23 at 10.53.23 PM.png…]()
+![Uploading Screenshot 2025-01-23 at 11.05.03 PM.png…]()
+
+Try it out: https://yuhui-8crprcg4l-kristi-hs-projects.vercel.app/
+
 # Overview
 
 While learning Chinese, I noticed I was spending a great deal of time writing and recalling Chinese characters. There were just too many of them, and it was time consuming to write them all out by hand each time. My goal was to get to a proficient level of character recognition rather than writing everything out by heart, so I wanted to find a way to practice that.
