@@ -1,9 +1,9 @@
 # YuHui: A game for practicing Chinese character recognition
 
-![Uploading Screenshot 2025-01-23 at 10.52.49 PM.png…]()
-![Uploading Screenshot 2025-01-23 at 10.53.01 PM.png…]()
-![Uploading Screenshot 2025-01-23 at 10.53.23 PM.png…]()
-![Uploading Screenshot 2025-01-23 at 11.05.03 PM.png…]()
+![homepage-darkmode](/assets/screenshots/home-night)
+![homepage-lightmode](/assets/screenshots/home-day)
+![practice-grid](/assets/screenshots/practice)
+![scoreboard-incorrect-list](/assets/screenshots/incorrect-list)
 
 Try it out: https://yuhui-8crprcg4l-kristi-hs-projects.vercel.app/
 
