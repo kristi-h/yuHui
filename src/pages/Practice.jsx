@@ -131,8 +131,8 @@ export default function Practice() {
       className="practice-container"
       style={{
         backgroundImage: isDarkMode
-          ? 'url("/assets/chinese-class.png")'
-          : 'url("/assets/chinese-classroom-evening2.png")',
+          ? 'url("/assets/chinese-classroom3.png")'
+          : 'url("/assets/chinese-class.png")',
       }}
     >
       {gameOver ? (

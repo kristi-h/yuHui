@@ -13,7 +13,7 @@ export default function Header() {
         YuHui
       </Link>
       <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-        {isDarkMode ? <LightModeIcon /> : <BedtimeIcon />}
+        {isDarkMode ? <BedtimeIcon /> : <LightModeIcon />}
       </button>
     </header>
   );
