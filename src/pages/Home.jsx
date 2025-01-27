@@ -75,6 +75,7 @@ export default function Home() {
     <div className={`home-center-container ${isDarkMode ? "dark" : ""}`}>
       <LanternWrapper />
       <div className="content-box">
+        <h1 className="home-title"> {`Study List: ${hsk3.name}`} </h1>
         <h1 className="home-title">Intensity: </h1>
         <div className="centered-carousel">
           {["easy", "medium", "difficult"].map((lvl) => (
